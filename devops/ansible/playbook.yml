@@ -1,0 +1,104 @@
+---
+# Nestie AI — Ansible Deployment Playbook
+# Usage: ansible-playbook -i inventory.ini playbook.yml
+
+- name: Deploy Nestie AI Platform
+  hosts: Nestie_servers
+  become: true
+  vars:
+    app_dir: /opt/Nestie
+    docker_compose_version: "2.24.5"
+    mysql_root_password: "{{ vault_mysql_root_password }}"
+    mysql_password: "{{ vault_mysql_password }}"
+    jwt_secret: "{{ vault_jwt_secret }}"
+    openai_api_key: "{{ vault_openai_api_key }}"
+
+  tasks:
+    # ─── System Setup ──────────────────────────────────
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Install required packages
+      apt:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - gnupg
+          - lsb-release
+          - python3-pip
+        state: present
+
+    # ─── Docker Installation ───────────────────────────
+    - name: Add Docker GPG key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add Docker repository
+      apt_repository:
+        repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+        state: present
+
+    - name: Install Docker
+      apt:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-compose-plugin
+        state: present
+
+    - name: Start and enable Docker
+      systemd:
+        name: docker
+        state: started
+        enabled: yes
+
+    # ─── Application Deployment ────────────────────────
+    - name: Create application directory
+      file:
+        path: "{{ app_dir }}"
+        state: directory
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: Copy project files
+      synchronize:
+        src: ../
+        dest: "{{ app_dir }}/"
+        rsync_opts:
+          - "--exclude=node_modules"
+          - "--exclude=target"
+          - "--exclude=.git"
+          - "--exclude=__pycache__"
+
+    - name: Create .env file
+      template:
+        src: templates/env.j2
+        dest: "{{ app_dir }}/.env"
+        mode: '0600'
+
+    - name: Build and start containers
+      community.docker.docker_compose_v2:
+        project_src: "{{ app_dir }}"
+        state: present
+        build: always
+      environment:
+        OPENAI_API_KEY: "{{ openai_api_key }}"
+
+    - name: Wait for gateway health check
+      uri:
+        url: "http://localhost:8080/api/health"
+        status_code: 200
+      register: health_result
+      until: health_result.status == 200
+      retries: 30
+      delay: 5
+
+    - name: Print deployment status
+      debug:
+        msg: "🌸 Nestie AI deployed successfully! Access at http://{{ ansible_host }}"

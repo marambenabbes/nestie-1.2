@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #fff8f0 0%, #fce4ec 50%, #f3e5f5 100%);
+  min-height: 100vh;
+  color: #4a4a4a;
+}
+
+/* Custom Material overrides for girly theme */
+.mat-mdc-raised-button.mat-primary {
+  --mdc-protected-button-container-color: #f48fb1;
+  border-radius: 25px !important;
+}
+
+.mat-mdc-card {
+  border-radius: 20px !important;
+  box-shadow: 0 8px 32px rgba(225, 190, 231, 0.2) !important;
+}
+
+.mat-mdc-form-field {
+  .mdc-text-field--outlined {
+    border-radius: 15px !important;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #fce4ec;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #f8bbd0;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f48fb1;
+}
+
+/* Floating chatbot bubble */
+.chatbot-bubble {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f48fb1, #ce93d8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(244, 143, 177, 0.4);
+  transition: all 0.3s ease;
+  z-index: 1000;
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 40px rgba(244, 143, 177, 0.6);
+  }
+
+  mat-icon {
+    color: white;
+    font-size: 28px;
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Pastel card styles */
+.mama-card {
+  @apply bg-white rounded-cute shadow-card p-6 transition-all duration-300;
+
+  &:hover {
+    @apply shadow-hover -translate-y-1;
+  }
+}
+
+/* Progress ring */
+.progress-ring {
+  transform: rotate(-90deg);
+}
+
+.progress-ring__circle {
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes pulse-soft {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
