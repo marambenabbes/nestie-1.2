@@ -1,0 +1,2680 @@
+
+Warning: This is a simple server for use in testing or debugging Angular applications
+locally. It hasn't been reviewed for security issues.
+
+Binding this server to an open connection can result in compromising your application or
+computer. Using a different host than the one passed to the "--host" flag might result in
+websocket connection issues. You might need to use "--disable-host-check" if that's the
+case.
+    
+- Building...
+
+Initial chunk files | Names                       |  Raw size
+styles.css          | styles                      | 170.39 kB | 
+polyfills.js        | polyfills                   |  88.09 kB | 
+main.js             | main                        |   5.70 kB | 
+chunk-7KAP6TVG.js   | -                           |   2.10 kB | 
+chunk-SHAOKUVO.js   | -                           | 938 bytes | 
+chunk-V46C2RZI.js   | -                           | 228 bytes | 
+
+                    | Initial total               | 267.41 kB
+
+Lazy chunk files    | Names                       |  Raw size
+chunk-2JCOA2ZL.js   | symptoms-component          |  81.62 kB | 
+chunk-GAQX66XO.js   | doctor-dashboard-component  |  69.25 kB | 
+chunk-ZEAY275L.js   | pregnancy-profile-component |  61.54 kB | 
+chunk-MXEOKOFZ.js   | nutrition-component         |  53.78 kB | 
+chunk-5TGXX2KT.js   | baby-growth-component       |  46.44 kB | 
+chunk-JHWBCUTK.js   | baby-preview-component      |  42.13 kB | 
+chunk-VQLQGQ5Y.js   | education-detail-component  |  36.84 kB | 
+chunk-ZLELTBZS.js   | medications-component       |  29.07 kB | 
+chunk-W5H35OO2.js   | patient-dashboard-component |  25.35 kB | 
+chunk-2HCYP23P.js   | layout-component            |  24.80 kB | 
+chunk-OYOG2IZH.js   | appointments-component      |  24.20 kB | 
+chunk-JLCGCXCA.js   | education-admin-component   |  19.09 kB | 
+chunk-FSFZK5KC.js   | education-quizzes-component |  16.79 kB | 
+chunk-DL5YVIIC.js   | education-list-component    |  14.02 kB | 
+chunk-BLGJOE76.js   | register-component          |  10.15 kB | 
+...and 5 more lazy chunks files. Use "--verbose" to show all the files.
+
+Application bundle generation complete. [6.317 seconds]
+
+Watch mode enabled. Watching for file changes...
+Re-optimizing dependencies because vite config has changed
+  ➜  Local:   http://localhost:4200/
+  ➜  Network: http://192.168.20.1:4200/
+  ➜  Network: http://192.168.100.1:4200/
+  ➜  Network: http://192.168.1.104:4200/
+- Changes detected. Rebuilding...
+
+Application bundle generation failed. [2.521 seconds]
+
+X [ERROR] TS2345: Argument of type '{ pregnancy_week: number; image_base64: string | null; }' is not assignable to parameter of type 'number'. [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:577:37:
+      577 │     this.aiService.analyzeUltrasound(payload).subscribe({
+          ╵                                      ~~~~~~~
+
+
+- Changes detected. Rebuilding...
+
+Application bundle generation failed. [0.628 seconds]
+
+X [ERROR] TS2345: Argument of type '{ pregnancy_week: number; image_base64: string | null; }' is not assignable to parameter of type '{ pregnancyWeek: number; imageBase64?: string | null | undefined; }'.
+  Property 'pregnancyWeek' is missing in type '{ pregnancy_week: number; image_base64: string | null; }' but required in type '{ pregnancyWeek: number; imageBase64?: string | null | undefined; }'. [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:577:37:
+      577 │     this.aiService.analyzeUltrasound(payload).subscribe({
+          ╵                                      ~~~~~~~
+
+  'pregnancyWeek' is declared here.
+
+    src/app/core/services/ai.service.ts:38:28:
+      38 │   analyzeUltrasound(data: { pregnancyWeek: number; imageBase64?: s...
+         ╵                             ~~~~~~~~~~~~~
+
+
+- Changes detected. Rebuilding...
+
+Application bundle generation failed. [0.723 seconds]
+
+X [ERROR] TS2345: Argument of type '{ pregnancy_week: number; image_base64: string | null; }' is not assignable to parameter of type 'number'. [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:577:37:
+      577 │     this.aiService.analyzeUltrasound(payload).subscribe({
+          ╵                                      ~~~~~~~
+
+
+- Changes detected. Rebuilding...
+
+Initial chunk files | Names                       |  Raw size
+styles.css          | styles                      | 170.39 kB | 
+polyfills.js        | polyfills                   |  88.09 kB | 
+main.js             | main                        |   5.70 kB | 
+chunk-7KAP6TVG.js   | -                           |   2.10 kB | 
+chunk-SHAOKUVO.js   | -                           | 938 bytes | 
+chunk-V46C2RZI.js   | -                           | 228 bytes | 
+
+                    | Initial total               | 267.41 kB
+
+Lazy chunk files    | Names                       |  Raw size
+chunk-2JCOA2ZL.js   | symptoms-component          |  81.62 kB | 
+chunk-GAQX66XO.js   | doctor-dashboard-component  |  69.25 kB | 
+chunk-ZEAY275L.js   | pregnancy-profile-component |  61.54 kB | 
+chunk-BNFOEUJI.js   | nutrition-component         |  53.78 kB | 
+chunk-J2VXETWH.js   | baby-growth-component       |  46.46 kB | 
+chunk-JHWBCUTK.js   | baby-preview-component      |  42.13 kB | 
+chunk-VQLQGQ5Y.js   | education-detail-component  |  36.84 kB | 
+chunk-ZLELTBZS.js   | medications-component       |  29.07 kB | 
+chunk-FZ4I3FHB.js   | patient-dashboard-component |  25.35 kB | 
+chunk-7DM62DBD.js   | layout-component            |  24.80 kB | 
+chunk-OYOG2IZH.js   | appointments-component      |  24.20 kB | 
+chunk-JLCGCXCA.js   | education-admin-component   |  19.09 kB | 
+chunk-FSFZK5KC.js   | education-quizzes-component |  16.79 kB | 
+chunk-DL5YVIIC.js   | education-list-component    |  14.02 kB | 
+chunk-BLGJOE76.js   | register-component          |  10.15 kB | 
+...and 5 more lazy chunks files. Use "--verbose" to show all the files.
+
+Application bundle generation complete. [0.512 seconds]
+
+Page reload sent to client(s).
+- Changes detected. Rebuilding...
+
+Application bundle generation failed. [0.921 seconds]
+
+X [ERROR] TS2741: Property 'ultrasoundImageUrl' is missing in type '{ weekNumber: number; weightGrams: number; lengthCm: number; headCircumferenceCm: number; abdominalCircumferenceCm: number; heartRate: number; recordedDate: string; developmentNotes: string; }' but required in type '{ weekNumber: number; weightGrams: number | null; lengthCm: number | null; headCircumferenceCm: number | null; abdominalCircumferenceCm: number | null; heartRate: number | null; recordedDate: string; developmentNotes: string; ultrasoundImageUrl: string; }'. [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:463:4:
+      463 │     this.formData = {
+          ╵     ~~~~~~~~~~~~~
+
+  'ultrasoundImageUrl' is declared here.
+
+    src/app/pages/baby-growth/baby-growth.component.ts:404:4:
+      404 │     ultrasoundImageUrl: ''
+          ╵     ~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] TS2741: Property 'ultrasoundImageUrl' is missing in type '{ weekNumber: number; weightGrams: null; lengthCm: null; headCircumferenceCm: null; abdominalCircumferenceCm: null; heartRate: null; recordedDate: string; developmentNotes: string; }' but required in type '{ weekNumber: number; weightGrams: number | null; lengthCm: number | null; headCircumferenceCm: number | null; abdominalCircumferenceCm: number | null; heartRate: number | null; recordedDate: string; developmentNotes: string; ultrasoundImageUrl: string; }'. [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:476:4:
+      476 │     this.formData = {
+          ╵     ~~~~~~~~~~~~~
+
+  'ultrasoundImageUrl' is declared here.
+
+    src/app/pages/baby-growth/baby-growth.component.ts:404:4:
+      404 │     ultrasoundImageUrl: ''
+          ╵     ~~~~~~~~~~~~~~~~~~~~~~
+
+
+- Changes detected. Rebuilding...
+
+Application bundle generation failed. [0.514 seconds]
+
+X [ERROR] TS2741: Property 'ultrasoundImageUrl' is missing in type '{ weekNumber: number; weightGrams: null; lengthCm: null; headCircumferenceCm: null; abdominalCircumferenceCm: null; heartRate: null; recordedDate: string; developmentNotes: string; }' but required in type '{ weekNumber: number; weightGrams: number | null; lengthCm: number | null; headCircumferenceCm: number | null; abdominalCircumferenceCm: number | null; heartRate: number | null; recordedDate: string; developmentNotes: string; ultrasoundImageUrl: string; }'. [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:480:4:
+      480 │     this.formData = {
+          ╵     ~~~~~~~~~~~~~
+
+  'ultrasoundImageUrl' is declared here.
+
+    src/app/pages/baby-growth/baby-growth.component.ts:404:4:
+      404 │     ultrasoundImageUrl: ''
+          ╵     ~~~~~~~~~~~~~~~~~~~~~~
+
+
+- Changes detected. Rebuilding...
+
+Initial chunk files | Names                       |  Raw size
+styles.css          | styles                      | 170.39 kB | 
+polyfills.js        | polyfills                   |  88.09 kB | 
+main.js             | main                        |   5.70 kB | 
+chunk-7KAP6TVG.js   | -                           |   2.10 kB | 
+chunk-SHAOKUVO.js   | -                           | 938 bytes | 
+chunk-V46C2RZI.js   | -                           | 228 bytes | 
+
+                    | Initial total               | 267.41 kB
+
+Lazy chunk files    | Names                       |  Raw size
+chunk-2JCOA2ZL.js   | symptoms-component          |  81.62 kB | 
+chunk-GAQX66XO.js   | doctor-dashboard-component  |  69.25 kB | 
+chunk-ZEAY275L.js   | pregnancy-profile-component |  61.54 kB | 
+chunk-BNFOEUJI.js   | nutrition-component         |  53.78 kB | 
+chunk-Q3NGIMU4.js   | baby-growth-component       |  46.67 kB | 
+chunk-JHWBCUTK.js   | baby-preview-component      |  42.13 kB | 
+chunk-VQLQGQ5Y.js   | education-detail-component  |  36.84 kB | 
+chunk-ZLELTBZS.js   | medications-component       |  29.07 kB | 
+chunk-FZ4I3FHB.js   | patient-dashboard-component |  25.35 kB | 
+chunk-7DM62DBD.js   | layout-component            |  24.80 kB | 
+chunk-OYOG2IZH.js   | appointments-component      |  24.20 kB | 
+chunk-JLCGCXCA.js   | education-admin-component   |  19.09 kB | 
+chunk-FSFZK5KC.js   | education-quizzes-component |  16.79 kB | 
+chunk-DL5YVIIC.js   | education-list-component    |  14.02 kB | 
+chunk-BLGJOE76.js   | register-component          |  10.15 kB | 
+...and 5 more lazy chunks files. Use "--verbose" to show all the files.
+
+Application bundle generation complete. [0.469 seconds]
+
+Page reload sent to client(s).
+- Changes detected. Rebuilding...
+
+Initial chunk files | Names                 | Raw size
+main.js             | main                  |  5.70 kB | 
+
+Lazy chunk files    | Names                 | Raw size
+chunk-MHECP46Y.js   | baby-growth-component | 46.76 kB | 
+
+Application bundle generation complete. [0.496 seconds]
+
+Page reload sent to client(s).
+- Changes detected. Rebuilding...
+
+Application bundle generation failed. [0.479 seconds]
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 9 in [(record as any).ultrasoundImageUrl] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@358:17 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:359:17:
+      359 │ ...     <div *ngIf="(record as any).ultrasoundImageUrl" class="mt...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 9 in [(record as any).ultrasoundImageUrl] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@358:17 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:360:26:
+      360 │ ...  <img [src]="(record as any).ultrasoundImageUrl" alt="Ultraso...
+          ╵                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 9 in [(record as any).ultrasoundImageUrl] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@359:26 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:360:26:
+      360 │ ...  <img [src]="(record as any).ultrasoundImageUrl" alt="Ultraso...
+          ╵                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 24 in [viewUltrasound((record as any).ultrasoundImageUrl)] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@359:136 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:360:136:
+      360 │ ...er" (click)="viewUltrasound((record as any).ultrasoundImageUrl)">
+          ╵                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 9 in [(record as any).ultrasoundImageUrl] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@358:17 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:360:136:
+      360 │ ...er" (click)="viewUltrasound((record as any).ultrasoundImageUrl)">
+          ╵                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 9 in [(record as any).ultrasoundImageUrl] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@359:26 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:360:136:
+      360 │ ...er" (click)="viewUltrasound((record as any).ultrasoundImageUrl)">
+          ╵                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Unexpected token ')' at column 50 in [viewUltrasound((record as any).ultrasoundImageUrl)] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@359:136 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:360:136:
+      360 │ ...er" (click)="viewUltrasound((record as any).ultrasoundImageUrl)">
+          ╵                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG9: Property 'viewUltrasound' does not exist on type 'BabyGrowthComponent'. [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:360:136:
+      360 │ ...ursor-pointer" (click)="viewUltrasound((record as any).ultraso...
+          ╵                            ~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 24 in [viewUltrasound((record as any).ultrasoundImageUrl)] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@359:136 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:366:45:
+      366 │ ...-icon-button (click)="editRecord(record)" class="!w-8 !h-8" ma...
+          ╵                          ~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 9 in [(record as any).ultrasoundImageUrl] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@358:17 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:366:45:
+      366 │ ...-icon-button (click)="editRecord(record)" class="!w-8 !h-8" ma...
+          ╵                          ~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 9 in [(record as any).ultrasoundImageUrl] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@359:26 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:366:45:
+      366 │ ...-icon-button (click)="editRecord(record)" class="!w-8 !h-8" ma...
+          ╵                          ~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Unexpected token ')' at column 50 in [viewUltrasound((record as any).ultrasoundImageUrl)] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@359:136 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:366:45:
+      366 │ ...-icon-button (click)="editRecord(record)" class="!w-8 !h-8" ma...
+          ╵                          ~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 24 in [viewUltrasound((record as any).ultrasoundImageUrl)] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@359:136 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:369:45:
+      369 │ ...con-button (click)="deleteRecord(record.id)" class="!w-8 !h-8"...
+          ╵                        ~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 9 in [(record as any).ultrasoundImageUrl] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@358:17 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:369:45:
+      369 │ ...con-button (click)="deleteRecord(record.id)" class="!w-8 !h-8"...
+          ╵                        ~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 9 in [(record as any).ultrasoundImageUrl] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@359:26 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:369:45:
+      369 │ ...con-button (click)="deleteRecord(record.id)" class="!w-8 !h-8"...
+          ╵                        ~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Unexpected token ')' at column 50 in [viewUltrasound((record as any).ultrasoundImageUrl)] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@359:136 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:369:45:
+      369 │ ...con-button (click)="deleteRecord(record.id)" class="!w-8 !h-8"...
+          ╵                        ~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 24 in [viewUltrasound((record as any).ultrasoundImageUrl)] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@359:136 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:377:11:
+      377 │       <div *ngIf="!loading && growthRecords.length === 0 && activ...
+          ╵            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 9 in [(record as any).ultrasoundImageUrl] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@358:17 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:377:11:
+      377 │       <div *ngIf="!loading && growthRecords.length === 0 && activ...
+          ╵            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 9 in [(record as any).ultrasoundImageUrl] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@359:26 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:377:11:
+      377 │       <div *ngIf="!loading && growthRecords.length === 0 && activ...
+          ╵            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Unexpected token ')' at column 50 in [viewUltrasound((record as any).ultrasoundImageUrl)] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@359:136 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:377:11:
+      377 │       <div *ngIf="!loading && growthRecords.length === 0 && activ...
+          ╵            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+- Changes detected. Rebuilding...
+
+Application bundle generation failed. [0.792 seconds]
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 9 in [(record as any).ultrasoundImageUrl] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@358:17 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:359:17:
+      359 │ ...     <div *ngIf="(record as any).ultrasoundImageUrl" class="mt...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 9 in [(record as any).ultrasoundImageUrl] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@358:17 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:360:26:
+      360 │ ...  <img [src]="(record as any).ultrasoundImageUrl" alt="Ultraso...
+          ╵                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 9 in [(record as any).ultrasoundImageUrl] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@359:26 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:360:26:
+      360 │ ...  <img [src]="(record as any).ultrasoundImageUrl" alt="Ultraso...
+          ╵                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 24 in [viewUltrasound((record as any).ultrasoundImageUrl)] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@359:136 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:360:136:
+      360 │ ...er" (click)="viewUltrasound((record as any).ultrasoundImageUrl)">
+          ╵                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 9 in [(record as any).ultrasoundImageUrl] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@358:17 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:360:136:
+      360 │ ...er" (click)="viewUltrasound((record as any).ultrasoundImageUrl)">
+          ╵                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 9 in [(record as any).ultrasoundImageUrl] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@359:26 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:360:136:
+      360 │ ...er" (click)="viewUltrasound((record as any).ultrasoundImageUrl)">
+          ╵                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Unexpected token ')' at column 50 in [viewUltrasound((record as any).ultrasoundImageUrl)] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@359:136 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:360:136:
+      360 │ ...er" (click)="viewUltrasound((record as any).ultrasoundImageUrl)">
+          ╵                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5: Argument of type 'BabyGrowth' is not assignable to parameter of type 'string'. [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:360:152:
+      360 │ ...er" (click)="viewUltrasound((record as any).ultrasoundImageUrl)">
+          ╵                                 ~~~~~~
+
+
+X [ERROR] NG9: Property 'ultrasoundImageUrl' does not exist on type 'void'. [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:360:167:
+      360 │ ...er" (click)="viewUltrasound((record as any).ultrasoundImageUrl)">
+          ╵                                                ~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 24 in [viewUltrasound((record as any).ultrasoundImageUrl)] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@359:136 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:366:45:
+      366 │ ...-icon-button (click)="editRecord(record)" class="!w-8 !h-8" ma...
+          ╵                          ~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 9 in [(record as any).ultrasoundImageUrl] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@358:17 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:366:45:
+      366 │ ...-icon-button (click)="editRecord(record)" class="!w-8 !h-8" ma...
+          ╵                          ~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 9 in [(record as any).ultrasoundImageUrl] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@359:26 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:366:45:
+      366 │ ...-icon-button (click)="editRecord(record)" class="!w-8 !h-8" ma...
+          ╵                          ~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Unexpected token ')' at column 50 in [viewUltrasound((record as any).ultrasoundImageUrl)] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@359:136 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:366:45:
+      366 │ ...-icon-button (click)="editRecord(record)" class="!w-8 !h-8" ma...
+          ╵                          ~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 24 in [viewUltrasound((record as any).ultrasoundImageUrl)] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@359:136 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:369:45:
+      369 │ ...con-button (click)="deleteRecord(record.id)" class="!w-8 !h-8"...
+          ╵                        ~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 9 in [(record as any).ultrasoundImageUrl] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@358:17 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:369:45:
+      369 │ ...con-button (click)="deleteRecord(record.id)" class="!w-8 !h-8"...
+          ╵                        ~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 9 in [(record as any).ultrasoundImageUrl] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@359:26 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:369:45:
+      369 │ ...con-button (click)="deleteRecord(record.id)" class="!w-8 !h-8"...
+          ╵                        ~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Unexpected token ')' at column 50 in [viewUltrasound((record as any).ultrasoundImageUrl)] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@359:136 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:369:45:
+      369 │ ...con-button (click)="deleteRecord(record.id)" class="!w-8 !h-8"...
+          ╵                        ~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 24 in [viewUltrasound((record as any).ultrasoundImageUrl)] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@359:136 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:377:11:
+      377 │       <div *ngIf="!loading && growthRecords.length === 0 && activ...
+          ╵            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 9 in [(record as any).ultrasoundImageUrl] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@358:17 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:377:11:
+      377 │       <div *ngIf="!loading && growthRecords.length === 0 && activ...
+          ╵            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 9 in [(record as any).ultrasoundImageUrl] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@359:26 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:377:11:
+      377 │       <div *ngIf="!loading && growthRecords.length === 0 && activ...
+          ╵            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Unexpected token ')' at column 50 in [viewUltrasound((record as any).ultrasoundImageUrl)] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/baby-growth/baby-growth.component.ts@359:136 [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:377:11:
+      377 │       <div *ngIf="!loading && growthRecords.length === 0 && activ...
+          ╵            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+- Changes detected. Rebuilding...
+
+Application bundle generation failed. [0.501 seconds]
+
+X [ERROR] NG9: Property 'getUltrasoundUrl' does not exist on type 'BabyGrowthComponent'. [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:359:24:
+      359 │             <div *ngIf="getUltrasoundUrl(record)" class="mt-3 rou...
+          ╵                         ~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG9: Property 'getUltrasoundUrl' does not exist on type 'BabyGrowthComponent'. [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:360:26:
+      360 │               <img [src]="getUltrasoundUrl(record)" alt="Ultrasou...
+          ╵                           ~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG9: Property 'getUltrasoundUrl' does not exist on type 'BabyGrowthComponent'. [plugin angular-compiler]
+
+    src/app/pages/baby-growth/baby-growth.component.ts:360:141:
+      360 │ ...sor-pointer" (click)="viewUltrasound(getUltrasoundUrl(record)!)">
+          ╵                                         ~~~~~~~~~~~~~~~~
+
+
+- Changes detected. Rebuilding...
+
+Initial chunk files | Names                       |  Raw size
+styles.css          | styles                      | 170.39 kB | 
+polyfills.js        | polyfills                   |  88.09 kB | 
+main.js             | main                        |   5.70 kB | 
+chunk-7KAP6TVG.js   | -                           |   2.10 kB | 
+chunk-SHAOKUVO.js   | -                           | 938 bytes | 
+chunk-V46C2RZI.js   | -                           | 228 bytes | 
+
+                    | Initial total               | 267.41 kB
+
+Lazy chunk files    | Names                       |  Raw size
+chunk-2JCOA2ZL.js   | symptoms-component          |  81.62 kB | 
+chunk-GAQX66XO.js   | doctor-dashboard-component  |  69.25 kB | 
+chunk-ZEAY275L.js   | pregnancy-profile-component |  61.54 kB | 
+chunk-BNFOEUJI.js   | nutrition-component         |  53.78 kB | 
+chunk-IK47DNJM.js   | baby-growth-component       |  48.19 kB | 
+chunk-JHWBCUTK.js   | baby-preview-component      |  42.13 kB | 
+chunk-VQLQGQ5Y.js   | education-detail-component  |  36.84 kB | 
+chunk-ZLELTBZS.js   | medications-component       |  29.07 kB | 
+chunk-FZ4I3FHB.js   | patient-dashboard-component |  25.35 kB | 
+chunk-7DM62DBD.js   | layout-component            |  24.80 kB | 
+chunk-OYOG2IZH.js   | appointments-component      |  24.20 kB | 
+chunk-JLCGCXCA.js   | education-admin-component   |  19.09 kB | 
+chunk-FSFZK5KC.js   | education-quizzes-component |  16.79 kB | 
+chunk-DL5YVIIC.js   | education-list-component    |  14.02 kB | 
+chunk-BLGJOE76.js   | register-component          |  10.15 kB | 
+...and 5 more lazy chunks files. Use "--verbose" to show all the files.
+
+Application bundle generation complete. [0.757 seconds]
+
+Page reload sent to client(s).
+- Changes detected. Rebuilding...
+
+Initial chunk files | Names                 | Raw size
+main.js             | main                  |  5.70 kB | 
+
+Lazy chunk files    | Names                 | Raw size
+chunk-HRYGIOOD.js   | baby-growth-component | 48.30 kB | 
+
+Application bundle generation complete. [0.513 seconds]
+
+Page reload sent to client(s).
+- Changes detected. Rebuilding...
+
+
+No output file changes.
+
+Application bundle generation complete. [2.173 seconds]
+
+- Changes detected. Rebuilding...
+
+Initial chunk files | Names                 | Raw size
+main.js             | main                  |  5.70 kB | 
+
+Lazy chunk files    | Names                 | Raw size
+chunk-TL7YSSUE.js   | baby-growth-component | 48.30 kB | 
+
+Application bundle generation complete. [0.493 seconds]
+
+Page reload sent to client(s).
+- Changes detected. Rebuilding...
+
+Initial chunk files | Names                 | Raw size
+main.js             | main                  |  5.70 kB | 
+
+Lazy chunk files    | Names                 | Raw size
+chunk-EWJJ54HP.js   | baby-growth-component | 48.30 kB | 
+
+Application bundle generation complete. [0.466 seconds]
+
+Page reload sent to client(s).
+- Changes detected. Rebuilding...
+
+Initial chunk files | Names                 | Raw size
+main.js             | main                  |  5.70 kB | 
+
+Lazy chunk files    | Names                 | Raw size
+chunk-RTPJNUEJ.js   | baby-growth-component | 48.18 kB | 
+
+Application bundle generation complete. [0.426 seconds]
+
+Page reload sent to client(s).
+- Changes detected. Rebuilding...
+
+Initial chunk files | Names                 | Raw size
+main.js             | main                  |  5.70 kB | 
+
+Lazy chunk files    | Names                 | Raw size
+chunk-VWCIAMML.js   | baby-growth-component | 48.10 kB | 
+
+Application bundle generation complete. [0.734 seconds]
+
+Page reload sent to client(s).
+- Changes detected. Rebuilding...
+
+Initial chunk files | Names                 | Raw size
+main.js             | main                  |  5.70 kB | 
+
+Lazy chunk files    | Names                 | Raw size
+chunk-K4I2FFXV.js   | baby-growth-component | 48.82 kB | 
+
+Application bundle generation complete. [0.790 seconds]
+
+Page reload sent to client(s).
+- Changes detected. Rebuilding...
+
+Application bundle generation failed. [0.663 seconds]
+
+X [ERROR] TS-991010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value is of type '[CommonModule, MatCardModule, MatIconModule, MatButtonModule, MatSnackBarModule, MatTooltipModule, MatProgressSpinnerModule, (not statically analyzable), DayModalComponent, StatsDashboardComponent]'. [plugin angular-compiler]
+
+    src/app/pages/symptoms/symptoms.component.ts:19:11:
+      19 │   imports: [
+         ╵            ^
+
+
+X [ERROR] TS2304: Cannot find name 'CalendarViewComponent'. [plugin angular-compiler]
+
+    src/app/pages/symptoms/symptoms.component.ts:27:4:
+      27 │     CalendarViewComponent,
+         ╵     ~~~~~~~~~~~~~~~~~~~~~
+
+
+- Changes detected. Rebuilding...
+
+Application bundle generation failed. [0.445 seconds]
+
+X [ERROR] NG8001: 'app-calendar-view' is not a known element:
+1. If 'app-calendar-view' is an Angular component, then verify that it is included in the '@Component.imports' of this component.
+2. If 'app-calendar-view' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message. [plugin angular-compiler]
+
+    src/app/pages/symptoms/symptoms.component.ts:56:8:
+      56 │         <app-calendar-view
+         ╵         ~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG8002: Can't bind to 'symptoms' since it isn't a known property of 'app-calendar-view'.
+1. If 'app-calendar-view' is an Angular component and it has 'symptoms' input, then verify that it is included in the '@Component.imports' of this component.
+2. If 'app-calendar-view' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@Component.schemas' of this component. [plugin angular-compiler]
+
+    src/app/pages/symptoms/symptoms.component.ts:57:10:
+      57 │           [symptoms]="symptoms"
+         ╵           ~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG8002: Can't bind to 'selectedDate' since it isn't a known property of 'app-calendar-view'.
+1. If 'app-calendar-view' is an Angular component and it has 'selectedDate' input, then verify that it is included in the '@Component.imports' of this component.
+2. If 'app-calendar-view' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@Component.schemas' of this component. [plugin angular-compiler]
+
+    src/app/pages/symptoms/symptoms.component.ts:58:10:
+      58 │           [selectedDate]="selectedDate"
+         ╵           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5: Argument of type 'Event' is not assignable to parameter of type 'Date'.
+  Type 'Event' is missing the following properties from type 'Date': toDateString, toTimeString, toLocaleDateString, toLocaleTimeString, and 37 more. [plugin angular-compiler]
+
+    src/app/pages/symptoms/symptoms.component.ts:59:41:
+      59 │           (dateSelected)="onDateSelected($event)"
+         ╵                                          ~~~~~~
+
+
+- Changes detected. Rebuilding...
+
+Application bundle generation failed. [0.370 seconds]
+
+X [ERROR] NG9: Property 'symptomCalendarEntries' does not exist on type 'SymptomsComponent'. [plugin angular-compiler]
+
+    src/app/pages/symptoms/symptoms.component.ts:57:21:
+      57 │           [entries]="symptomCalendarEntries"
+         ╵                      ~~~~~~~~~~~~~~~~~~~~~~
+
+
+- Changes detected. Rebuilding...
+
+Initial chunk files | Names                       |  Raw size
+styles.css          | styles                      | 170.39 kB | 
+polyfills.js        | polyfills                   |  88.09 kB | 
+main.js             | main                        |   5.70 kB | 
+chunk-7KAP6TVG.js   | -                           |   2.10 kB | 
+chunk-SHAOKUVO.js   | -                           | 938 bytes | 
+chunk-V46C2RZI.js   | -                           | 228 bytes | 
+
+                    | Initial total               | 267.41 kB
+
+Lazy chunk files    | Names                       |  Raw size
+chunk-QSS2OGOB.js   | symptoms-component          |  79.73 kB | 
+chunk-GAQX66XO.js   | doctor-dashboard-component  |  69.25 kB | 
+chunk-ZEAY275L.js   | pregnancy-profile-component |  61.54 kB | 
+chunk-BNFOEUJI.js   | nutrition-component         |  53.78 kB | 
+chunk-K4I2FFXV.js   | baby-growth-component       |  48.82 kB | 
+chunk-JHWBCUTK.js   | baby-preview-component      |  42.13 kB | 
+chunk-VQLQGQ5Y.js   | education-detail-component  |  36.84 kB | 
+chunk-ZLELTBZS.js   | medications-component       |  29.07 kB | 
+chunk-FZ4I3FHB.js   | patient-dashboard-component |  25.35 kB | 
+chunk-7DM62DBD.js   | layout-component            |  24.80 kB | 
+chunk-OYOG2IZH.js   | appointments-component      |  24.20 kB | 
+chunk-JLCGCXCA.js   | education-admin-component   |  19.09 kB | 
+chunk-FSFZK5KC.js   | education-quizzes-component |  16.79 kB | 
+chunk-DL5YVIIC.js   | education-list-component    |  14.02 kB | 
+chunk-BLGJOE76.js   | register-component          |  10.15 kB | 
+...and 5 more lazy chunks files. Use "--verbose" to show all the files.
+
+Application bundle generation complete. [0.560 seconds]
+
+Page reload sent to client(s).
+- Changes detected. Rebuilding...
+
+Initial chunk files | Names              |  Raw size
+styles.css          | styles             | 170.46 kB | 
+main.js             | main               |   5.70 kB | 
+
+Lazy chunk files    | Names              |  Raw size
+chunk-V22BJ3G5.js   | symptoms-component |  80.01 kB | 
+
+Application bundle generation complete. [0.586 seconds]
+
+Page reload sent to client(s).
+- Changes detected. Rebuilding...
+
+Application bundle generation failed. [0.534 seconds]
+
+X [ERROR] NG9: This expression is not callable.
+  Type 'String' has no call signatures. [plugin angular-compiler]
+
+    src/app/pages/education/education-list.component.ts:59:76:
+      59 │ ...k() > 0">Week {{ currentWeek() }} · {{ trimesterLabel() }}</span>
+         ╵                                          ~~~~~~~~~~~~~~
+
+
+X [ERROR] NG2: Object is possibly 'undefined'. [plugin angular-compiler]
+
+    src/app/pages/education/education-list.component.ts:173:31:
+      173 │ ...span *ngIf="mod.progress?.completionPercentage > 0" class="tex...
+          ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+- Changes detected. Rebuilding...
+
+Application bundle generation failed. [0.619 seconds]
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:199:38:
+      199 │ ...seenter)="!q.revealed && ($event.target as HTMLElement).style....
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:200:38:
+      200 │ ...seleave)="!q.revealed && ($event.target as HTMLElement).style....
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:200:38:
+      200 │ ...seleave)="!q.revealed && ($event.target as HTMLElement).style....
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:202:18:
+      202 │                   {{ option }}
+          ╵                   ~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:202:18:
+      202 │                   {{ option }}
+          ╵                   ~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:203:28:
+      203 │ ...<mat-icon *ngIf="q.revealed && option === q.correctAnswer" cla...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:203:28:
+      203 │ ...<mat-icon *ngIf="q.revealed && option === q.correctAnswer" cla...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:204:28:
+      204 │ ...<mat-icon *ngIf="q.revealed && option === q.selectedAnswer && ...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:204:28:
+      204 │ ...<mat-icon *ngIf="q.revealed && option === q.selectedAnswer && ...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:209:19:
+      209 │ ...     <div *ngIf="currentQuestion()!.revealed && q.explanation"...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:209:19:
+      209 │ ...     <div *ngIf="currentQuestion()!.revealed && q.explanation"...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:211:58:
+      211 │ ...<p class="text-sm" style="color: #6B5F72">{{ q.explanation }}</p>
+          ╵                                              ~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:211:58:
+      211 │ ...<p class="text-sm" style="color: #6B5F72">{{ q.explanation }}</p>
+          ╵                                              ~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:215:24:
+      215 │ ...     <button *ngIf="!currentQuestion()!.revealed" mat-flat-but...
+          ╵                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:215:24:
+      215 │ ...     <button *ngIf="!currentQuestion()!.revealed" mat-flat-but...
+          ╵                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:218:24:
+      218 │ ...  <button *ngIf="currentQuestion()!.revealed && currentQuestio...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:218:24:
+      218 │ ...  <button *ngIf="currentQuestion()!.revealed && currentQuestio...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:219:49:
+      219 │                         mat-flat-button (click)="nextQuestion()"
+          ╵                                                  ~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:219:49:
+      219 │                         mat-flat-button (click)="nextQuestion()"
+          ╵                                                  ~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:223:24:
+      223 │ ...  <button *ngIf="currentQuestion()!.revealed && currentQuestio...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:223:24:
+      223 │ ...  <button *ngIf="currentQuestion()!.revealed && currentQuestio...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:224:49:
+      224 │                         mat-flat-button (click)="finishQuiz()"
+          ╵                                                  ~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:224:49:
+      224 │                         mat-flat-button (click)="finishQuiz()"
+          ╵                                                  ~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:233:15:
+      233 │           <div *ngIf="quizState() === 'passed'" class="py-10 text...
+          ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:233:15:
+      233 │           <div *ngIf="quizState() === 'passed'" class="py-10 text...
+          ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:233:74:
+      233 │ ...uizState() === 'passed'" class="py-10 text-center" [@softReveal]>
+          ╵                                                       ~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:233:74:
+      233 │ ...uizState() === 'passed'" class="py-10 text-center" [@softReveal]>
+          ╵                                                       ~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:238:59:
+      238 │ ... #9A8FA8">You got {{ correctCount() }} out of {{ quizQuestions...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:238:59:
+      238 │ ... #9A8FA8">You got {{ correctCount() }} out of {{ quizQuestions...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:239:17:
+      239 │             <div *ngIf="quizResult() as result" class="mt-3 inlin...
+          ╵                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:239:17:
+      239 │             <div *ngIf="quizResult() as result" class="mt-3 inlin...
+          ╵                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:240:14:
+      240 │               Score: {{ result.scorePercentage | number:'1.0-0' }}%
+          ╵               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:240:14:
+      240 │               Score: {{ result.scorePercentage | number:'1.0-0' }}%
+          ╵               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:242:48:
+      242 │ ...t-stroked-button (click)="resetQuiz()" class="!mt-4 !rounded-f...
+          ╵                              ~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:242:48:
+      242 │ ...t-stroked-button (click)="resetQuiz()" class="!mt-4 !rounded-f...
+          ╵                              ~~~~~~~~~~~
+
+
+X [ERROR] NG9: This expression is not callable.
+  Type 'String' has no call signatures. [plugin angular-compiler]
+
+    src/app/pages/education/education-list.component.ts:59:76:
+      59 │ ...k() > 0">Week {{ currentWeek() }} · {{ trimesterLabel() }}</span>
+         ╵                                          ~~~~~~~~~~~~~~
+
+
+X [ERROR] NG2: Object is possibly 'undefined'. [plugin angular-compiler]
+
+    src/app/pages/education/education-list.component.ts:173:31:
+      173 │ ...span *ngIf="mod.progress?.completionPercentage > 0" class="tex...
+          ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+- Changes detected. Rebuilding...
+
+Application bundle generation failed. [0.848 seconds]
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:199:38:
+      199 │ ...seenter)="!q.revealed && ($event.target as HTMLElement).style....
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:200:38:
+      200 │ ...seleave)="!q.revealed && ($event.target as HTMLElement).style....
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:200:38:
+      200 │ ...seleave)="!q.revealed && ($event.target as HTMLElement).style....
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:202:18:
+      202 │                   {{ option }}
+          ╵                   ~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:202:18:
+      202 │                   {{ option }}
+          ╵                   ~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:203:28:
+      203 │ ...<mat-icon *ngIf="q.revealed && option === q.correctAnswer" cla...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:203:28:
+      203 │ ...<mat-icon *ngIf="q.revealed && option === q.correctAnswer" cla...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:204:28:
+      204 │ ...<mat-icon *ngIf="q.revealed && option === q.selectedAnswer && ...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:204:28:
+      204 │ ...<mat-icon *ngIf="q.revealed && option === q.selectedAnswer && ...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:209:19:
+      209 │ ...     <div *ngIf="currentQuestion()!.revealed && q.explanation"...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:209:19:
+      209 │ ...     <div *ngIf="currentQuestion()!.revealed && q.explanation"...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:211:58:
+      211 │ ...<p class="text-sm" style="color: #6B5F72">{{ q.explanation }}</p>
+          ╵                                              ~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:211:58:
+      211 │ ...<p class="text-sm" style="color: #6B5F72">{{ q.explanation }}</p>
+          ╵                                              ~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:215:24:
+      215 │ ...     <button *ngIf="!currentQuestion()!.revealed" mat-flat-but...
+          ╵                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:215:24:
+      215 │ ...     <button *ngIf="!currentQuestion()!.revealed" mat-flat-but...
+          ╵                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:218:24:
+      218 │ ...  <button *ngIf="currentQuestion()!.revealed && currentQuestio...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:218:24:
+      218 │ ...  <button *ngIf="currentQuestion()!.revealed && currentQuestio...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:219:49:
+      219 │                         mat-flat-button (click)="nextQuestion()"
+          ╵                                                  ~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:219:49:
+      219 │                         mat-flat-button (click)="nextQuestion()"
+          ╵                                                  ~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:223:24:
+      223 │ ...  <button *ngIf="currentQuestion()!.revealed && currentQuestio...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:223:24:
+      223 │ ...  <button *ngIf="currentQuestion()!.revealed && currentQuestio...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:224:49:
+      224 │                         mat-flat-button (click)="finishQuiz()"
+          ╵                                                  ~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:224:49:
+      224 │                         mat-flat-button (click)="finishQuiz()"
+          ╵                                                  ~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:233:15:
+      233 │           <div *ngIf="quizState() === 'passed'" class="py-10 text...
+          ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:233:15:
+      233 │           <div *ngIf="quizState() === 'passed'" class="py-10 text...
+          ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:233:74:
+      233 │ ...uizState() === 'passed'" class="py-10 text-center" [@softReveal]>
+          ╵                                                       ~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:233:74:
+      233 │ ...uizState() === 'passed'" class="py-10 text-center" [@softReveal]>
+          ╵                                                       ~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:238:59:
+      238 │ ... #9A8FA8">You got {{ correctCount() }} out of {{ quizQuestions...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:238:59:
+      238 │ ... #9A8FA8">You got {{ correctCount() }} out of {{ quizQuestions...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:239:17:
+      239 │             <div *ngIf="quizResult() as result" class="mt-3 inlin...
+          ╵                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:239:17:
+      239 │             <div *ngIf="quizResult() as result" class="mt-3 inlin...
+          ╵                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:240:14:
+      240 │               Score: {{ result.scorePercentage | number:'1.0-0' }}%
+          ╵               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:240:14:
+      240 │               Score: {{ result.scorePercentage | number:'1.0-0' }}%
+          ╵               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:242:48:
+      242 │ ...t-stroked-button (click)="resetQuiz()" class="!mt-4 !rounded-f...
+          ╵                              ~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:242:48:
+      242 │ ...t-stroked-button (click)="resetQuiz()" class="!mt-4 !rounded-f...
+          ╵                              ~~~~~~~~~~~
+
+
+X [ERROR] NG9: This expression is not callable.
+  Type 'String' has no call signatures. [plugin angular-compiler]
+
+    src/app/pages/education/education-list.component.ts:60:76:
+      60 │ ...k() > 0">Week {{ currentWeek() }} · {{ trimesterLabel() }}</span>
+         ╵                                          ~~~~~~~~~~~~~~
+
+
+X [ERROR] NG2: Object is possibly 'undefined'. [plugin angular-compiler]
+
+    src/app/pages/education/education-list.component.ts:215:33:
+      215 │ ...span *ngIf="mod.progress?.completionPercentage > 0" class="tex...
+          ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+- Changes detected. Rebuilding...
+
+Application bundle generation failed. [0.900 seconds]
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:199:38:
+      199 │ ...seenter)="!q.revealed && ($event.target as HTMLElement).style....
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:200:38:
+      200 │ ...seleave)="!q.revealed && ($event.target as HTMLElement).style....
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:200:38:
+      200 │ ...seleave)="!q.revealed && ($event.target as HTMLElement).style....
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:202:18:
+      202 │                   {{ option }}
+          ╵                   ~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:202:18:
+      202 │                   {{ option }}
+          ╵                   ~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:203:28:
+      203 │ ...<mat-icon *ngIf="q.revealed && option === q.correctAnswer" cla...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:203:28:
+      203 │ ...<mat-icon *ngIf="q.revealed && option === q.correctAnswer" cla...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:204:28:
+      204 │ ...<mat-icon *ngIf="q.revealed && option === q.selectedAnswer && ...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:204:28:
+      204 │ ...<mat-icon *ngIf="q.revealed && option === q.selectedAnswer && ...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:209:19:
+      209 │ ...     <div *ngIf="currentQuestion()!.revealed && q.explanation"...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:209:19:
+      209 │ ...     <div *ngIf="currentQuestion()!.revealed && q.explanation"...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:211:58:
+      211 │ ...<p class="text-sm" style="color: #6B5F72">{{ q.explanation }}</p>
+          ╵                                              ~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:211:58:
+      211 │ ...<p class="text-sm" style="color: #6B5F72">{{ q.explanation }}</p>
+          ╵                                              ~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:215:24:
+      215 │ ...     <button *ngIf="!currentQuestion()!.revealed" mat-flat-but...
+          ╵                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:215:24:
+      215 │ ...     <button *ngIf="!currentQuestion()!.revealed" mat-flat-but...
+          ╵                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:218:24:
+      218 │ ...  <button *ngIf="currentQuestion()!.revealed && currentQuestio...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:218:24:
+      218 │ ...  <button *ngIf="currentQuestion()!.revealed && currentQuestio...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:219:49:
+      219 │                         mat-flat-button (click)="nextQuestion()"
+          ╵                                                  ~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:219:49:
+      219 │                         mat-flat-button (click)="nextQuestion()"
+          ╵                                                  ~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:223:24:
+      223 │ ...  <button *ngIf="currentQuestion()!.revealed && currentQuestio...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:223:24:
+      223 │ ...  <button *ngIf="currentQuestion()!.revealed && currentQuestio...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:224:49:
+      224 │                         mat-flat-button (click)="finishQuiz()"
+          ╵                                                  ~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:224:49:
+      224 │                         mat-flat-button (click)="finishQuiz()"
+          ╵                                                  ~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:233:15:
+      233 │           <div *ngIf="quizState() === 'passed'" class="py-10 text...
+          ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:233:15:
+      233 │           <div *ngIf="quizState() === 'passed'" class="py-10 text...
+          ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:233:74:
+      233 │ ...uizState() === 'passed'" class="py-10 text-center" [@softReveal]>
+          ╵                                                       ~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:233:74:
+      233 │ ...uizState() === 'passed'" class="py-10 text-center" [@softReveal]>
+          ╵                                                       ~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:238:59:
+      238 │ ... #9A8FA8">You got {{ correctCount() }} out of {{ quizQuestions...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:238:59:
+      238 │ ... #9A8FA8">You got {{ correctCount() }} out of {{ quizQuestions...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:239:17:
+      239 │             <div *ngIf="quizResult() as result" class="mt-3 inlin...
+          ╵                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:239:17:
+      239 │             <div *ngIf="quizResult() as result" class="mt-3 inlin...
+          ╵                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:240:14:
+      240 │               Score: {{ result.scorePercentage | number:'1.0-0' }}%
+          ╵               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:240:14:
+      240 │               Score: {{ result.scorePercentage | number:'1.0-0' }}%
+          ╵               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:242:48:
+      242 │ ...t-stroked-button (click)="resetQuiz()" class="!mt-4 !rounded-f...
+          ╵                              ~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:242:48:
+      242 │ ...t-stroked-button (click)="resetQuiz()" class="!mt-4 !rounded-f...
+          ╵                              ~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:250:117:
+      250 │ ...o-[#fff]" *ngIf="quizState() === 'passed' || currentModule()?....
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:250:117:
+      250 │ ...o-[#fff]" *ngIf="quizState() === 'passed' || currentModule()?....
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:259:66:
+      259 │ ...l font-bold" style="color: #7B5A9A">+{{ earnedPoints() }} ✨</p>
+          ╵                                        ~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:259:66:
+      259 │ ...l font-bold" style="color: #7B5A9A">+{{ earnedPoints() }} ✨</p>
+          ╵                                        ~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:265:20:
+      265 │                     *ngFor="let mood of reflectionOptions"
+          ╵                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:265:20:
+      265 │                     *ngFor="let mood of reflectionOptions"
+          ╵                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:266:29:
+      266 │                     (click)="selectReflectionMood(mood)"
+          ╵                              ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:266:29:
+      266 │                     (click)="selectReflectionMood(mood)"
+          ╵                              ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:267:44:
+      267 │ ...               [class.!bg-purple-100]="reflectionMood() === mood"
+          ╵                                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:267:44:
+      267 │ ...               [class.!bg-purple-100]="reflectionMood() === mood"
+          ╵                                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:268:48:
+      268 │ ...           [class.!border-purple-200]="reflectionMood() === mood"
+          ╵                                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:268:48:
+      268 │ ...           [class.!border-purple-200]="reflectionMood() === mood"
+          ╵                                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:269:46:
+      269 │ ...             [class.!text-purple-500]="reflectionMood() === mood"
+          ╵                                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:269:46:
+      269 │ ...             [class.!text-purple-500]="reflectionMood() === mood"
+          ╵                                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:270:46:
+      270 │ ...             [class.!border-gray-200]="reflectionMood() !== mood"
+          ╵                                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:270:46:
+      270 │ ...             [class.!border-gray-200]="reflectionMood() !== mood"
+          ╵                                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:271:44:
+      271 │ ...               [class.!text-gray-500]="reflectionMood() !== mood"
+          ╵                                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:271:44:
+      271 │ ...               [class.!text-gray-500]="reflectionMood() !== mood"
+          ╵                                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:273:14:
+      273 │               {{ reflectionMoodLabel(mood) }}
+          ╵               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:273:14:
+      273 │               {{ reflectionMoodLabel(mood) }}
+          ╵               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:277:52:
+      277 │ ... class="mt-4 flex items-center gap-2" *ngIf="!reflectionSaved()">
+          ╵                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:277:52:
+      277 │ ... class="mt-4 flex items-center gap-2" *ngIf="!reflectionSaved()">
+          ╵                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:279:32:
+      279 │                     [disabled]="!reflectionMood()"
+          ╵                                 ~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:279:32:
+      279 │                     [disabled]="!reflectionMood()"
+          ╵                                 ~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:280:29:
+      280 │                     (click)="saveReflection()">
+          ╵                              ~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:280:29:
+      280 │                     (click)="saveReflection()">
+          ╵                              ~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:288:15:
+      288 │                *ngIf="reflectionSaved()">
+          ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:288:15:
+      288 │                *ngIf="reflectionSaved()">
+          ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG9: This expression is not callable.
+  Type 'String' has no call signatures. [plugin angular-compiler]
+
+    src/app/pages/education/education-list.component.ts:60:76:
+      60 │ ...k() > 0">Week {{ currentWeek() }} · {{ trimesterLabel() }}</span>
+         ╵                                          ~~~~~~~~~~~~~~
+
+
+X [ERROR] NG2: Object is possibly 'undefined'. [plugin angular-compiler]
+
+    src/app/pages/education/education-list.component.ts:215:33:
+      215 │ ...span *ngIf="mod.progress?.completionPercentage > 0" class="tex...
+          ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+- Changes detected. Rebuilding...
+
+Application bundle generation failed. [0.750 seconds]
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:199:38:
+      199 │ ...seenter)="!q.revealed && ($event.target as HTMLElement).style....
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:200:38:
+      200 │ ...seleave)="!q.revealed && ($event.target as HTMLElement).style....
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:200:38:
+      200 │ ...seleave)="!q.revealed && ($event.target as HTMLElement).style....
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:202:18:
+      202 │                   {{ option }}
+          ╵                   ~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:202:18:
+      202 │                   {{ option }}
+          ╵                   ~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:203:28:
+      203 │ ...<mat-icon *ngIf="q.revealed && option === q.correctAnswer" cla...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:203:28:
+      203 │ ...<mat-icon *ngIf="q.revealed && option === q.correctAnswer" cla...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:204:28:
+      204 │ ...<mat-icon *ngIf="q.revealed && option === q.selectedAnswer && ...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:204:28:
+      204 │ ...<mat-icon *ngIf="q.revealed && option === q.selectedAnswer && ...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:209:19:
+      209 │ ...     <div *ngIf="currentQuestion()!.revealed && q.explanation"...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:209:19:
+      209 │ ...     <div *ngIf="currentQuestion()!.revealed && q.explanation"...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:211:58:
+      211 │ ...<p class="text-sm" style="color: #6B5F72">{{ q.explanation }}</p>
+          ╵                                              ~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:211:58:
+      211 │ ...<p class="text-sm" style="color: #6B5F72">{{ q.explanation }}</p>
+          ╵                                              ~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:215:24:
+      215 │ ...     <button *ngIf="!currentQuestion()!.revealed" mat-flat-but...
+          ╵                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:215:24:
+      215 │ ...     <button *ngIf="!currentQuestion()!.revealed" mat-flat-but...
+          ╵                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:218:24:
+      218 │ ...  <button *ngIf="currentQuestion()!.revealed && currentQuestio...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:218:24:
+      218 │ ...  <button *ngIf="currentQuestion()!.revealed && currentQuestio...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:219:49:
+      219 │                         mat-flat-button (click)="nextQuestion()"
+          ╵                                                  ~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:219:49:
+      219 │                         mat-flat-button (click)="nextQuestion()"
+          ╵                                                  ~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:223:24:
+      223 │ ...  <button *ngIf="currentQuestion()!.revealed && currentQuestio...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:223:24:
+      223 │ ...  <button *ngIf="currentQuestion()!.revealed && currentQuestio...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:224:49:
+      224 │                         mat-flat-button (click)="finishQuiz()"
+          ╵                                                  ~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:224:49:
+      224 │                         mat-flat-button (click)="finishQuiz()"
+          ╵                                                  ~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:233:15:
+      233 │           <div *ngIf="quizState() === 'passed'" class="py-10 text...
+          ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:233:15:
+      233 │           <div *ngIf="quizState() === 'passed'" class="py-10 text...
+          ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:233:74:
+      233 │ ...uizState() === 'passed'" class="py-10 text-center" [@softReveal]>
+          ╵                                                       ~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:233:74:
+      233 │ ...uizState() === 'passed'" class="py-10 text-center" [@softReveal]>
+          ╵                                                       ~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:238:59:
+      238 │ ... #9A8FA8">You got {{ correctCount() }} out of {{ quizQuestions...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:238:59:
+      238 │ ... #9A8FA8">You got {{ correctCount() }} out of {{ quizQuestions...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:239:17:
+      239 │             <div *ngIf="quizResult() as result" class="mt-3 inlin...
+          ╵                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:239:17:
+      239 │             <div *ngIf="quizResult() as result" class="mt-3 inlin...
+          ╵                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:240:14:
+      240 │               Score: {{ result.scorePercentage | number:'1.0-0' }}%
+          ╵               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:240:14:
+      240 │               Score: {{ result.scorePercentage | number:'1.0-0' }}%
+          ╵               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:242:48:
+      242 │ ...t-stroked-button (click)="resetQuiz()" class="!mt-4 !rounded-f...
+          ╵                              ~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:242:48:
+      242 │ ...t-stroked-button (click)="resetQuiz()" class="!mt-4 !rounded-f...
+          ╵                              ~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:250:117:
+      250 │ ...o-[#fff]" *ngIf="quizState() === 'passed' || currentModule()?....
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:250:117:
+      250 │ ...o-[#fff]" *ngIf="quizState() === 'passed' || currentModule()?....
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:259:66:
+      259 │ ...l font-bold" style="color: #7B5A9A">+{{ earnedPoints() }} ✨</p>
+          ╵                                        ~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:259:66:
+      259 │ ...l font-bold" style="color: #7B5A9A">+{{ earnedPoints() }} ✨</p>
+          ╵                                        ~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:265:20:
+      265 │                     *ngFor="let mood of reflectionOptions"
+          ╵                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:265:20:
+      265 │                     *ngFor="let mood of reflectionOptions"
+          ╵                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:266:29:
+      266 │                     (click)="selectReflectionMood(mood)"
+          ╵                              ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:266:29:
+      266 │                     (click)="selectReflectionMood(mood)"
+          ╵                              ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:267:44:
+      267 │ ...               [class.!bg-purple-100]="reflectionMood() === mood"
+          ╵                                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:267:44:
+      267 │ ...               [class.!bg-purple-100]="reflectionMood() === mood"
+          ╵                                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:268:48:
+      268 │ ...           [class.!border-purple-200]="reflectionMood() === mood"
+          ╵                                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:268:48:
+      268 │ ...           [class.!border-purple-200]="reflectionMood() === mood"
+          ╵                                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:269:46:
+      269 │ ...             [class.!text-purple-500]="reflectionMood() === mood"
+          ╵                                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:269:46:
+      269 │ ...             [class.!text-purple-500]="reflectionMood() === mood"
+          ╵                                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:270:46:
+      270 │ ...             [class.!border-gray-200]="reflectionMood() !== mood"
+          ╵                                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:270:46:
+      270 │ ...             [class.!border-gray-200]="reflectionMood() !== mood"
+          ╵                                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:271:44:
+      271 │ ...               [class.!text-gray-500]="reflectionMood() !== mood"
+          ╵                                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:271:44:
+      271 │ ...               [class.!text-gray-500]="reflectionMood() !== mood"
+          ╵                                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:273:14:
+      273 │               {{ reflectionMoodLabel(mood) }}
+          ╵               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:273:14:
+      273 │               {{ reflectionMoodLabel(mood) }}
+          ╵               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:277:52:
+      277 │ ... class="mt-4 flex items-center gap-2" *ngIf="!reflectionSaved()">
+          ╵                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:277:52:
+      277 │ ... class="mt-4 flex items-center gap-2" *ngIf="!reflectionSaved()">
+          ╵                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:279:32:
+      279 │                     [disabled]="!reflectionMood()"
+          ╵                                 ~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:279:32:
+      279 │                     [disabled]="!reflectionMood()"
+          ╵                                 ~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:280:29:
+      280 │                     (click)="saveReflection()">
+          ╵                              ~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:280:29:
+      280 │                     (click)="saveReflection()">
+          ╵                              ~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:288:15:
+      288 │                *ngIf="reflectionSaved()">
+          ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:288:15:
+      288 │                *ngIf="reflectionSaved()">
+          ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG9: This expression is not callable.
+  Type 'String' has no call signatures. [plugin angular-compiler]
+
+    src/app/pages/education/education-list.component.ts:60:76:
+      60 │ ...k() > 0">Week {{ currentWeek() }} · {{ trimesterLabel() }}</span>
+         ╵                                          ~~~~~~~~~~~~~~
+
+
+X [ERROR] NG2: Object is possibly 'undefined'. [plugin angular-compiler]
+
+    src/app/pages/education/education-list.component.ts:215:33:
+      215 │ ...span *ngIf="mod.progress?.completionPercentage > 0" class="tex...
+          ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+- Changes detected. Rebuilding...
+
+Application bundle generation failed. [0.591 seconds]
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:199:38:
+      199 │ ...seenter)="!q.revealed && ($event.target as HTMLElement).style....
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:200:38:
+      200 │ ...seleave)="!q.revealed && ($event.target as HTMLElement).style....
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:200:38:
+      200 │ ...seleave)="!q.revealed && ($event.target as HTMLElement).style....
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:202:18:
+      202 │                   {{ option }}
+          ╵                   ~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:202:18:
+      202 │                   {{ option }}
+          ╵                   ~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:203:28:
+      203 │ ...<mat-icon *ngIf="q.revealed && option === q.correctAnswer" cla...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:203:28:
+      203 │ ...<mat-icon *ngIf="q.revealed && option === q.correctAnswer" cla...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:204:28:
+      204 │ ...<mat-icon *ngIf="q.revealed && option === q.selectedAnswer && ...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:204:28:
+      204 │ ...<mat-icon *ngIf="q.revealed && option === q.selectedAnswer && ...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:209:19:
+      209 │ ...     <div *ngIf="currentQuestion()!.revealed && q.explanation"...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:209:19:
+      209 │ ...     <div *ngIf="currentQuestion()!.revealed && q.explanation"...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:211:58:
+      211 │ ...<p class="text-sm" style="color: #6B5F72">{{ q.explanation }}</p>
+          ╵                                              ~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:211:58:
+      211 │ ...<p class="text-sm" style="color: #6B5F72">{{ q.explanation }}</p>
+          ╵                                              ~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:215:24:
+      215 │ ...     <button *ngIf="!currentQuestion()!.revealed" mat-flat-but...
+          ╵                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:215:24:
+      215 │ ...     <button *ngIf="!currentQuestion()!.revealed" mat-flat-but...
+          ╵                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:218:24:
+      218 │ ...  <button *ngIf="currentQuestion()!.revealed && currentQuestio...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:218:24:
+      218 │ ...  <button *ngIf="currentQuestion()!.revealed && currentQuestio...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:219:49:
+      219 │                         mat-flat-button (click)="nextQuestion()"
+          ╵                                                  ~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:219:49:
+      219 │                         mat-flat-button (click)="nextQuestion()"
+          ╵                                                  ~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:223:24:
+      223 │ ...  <button *ngIf="currentQuestion()!.revealed && currentQuestio...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:223:24:
+      223 │ ...  <button *ngIf="currentQuestion()!.revealed && currentQuestio...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:224:49:
+      224 │                         mat-flat-button (click)="finishQuiz()"
+          ╵                                                  ~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:224:49:
+      224 │                         mat-flat-button (click)="finishQuiz()"
+          ╵                                                  ~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:233:15:
+      233 │           <div *ngIf="quizState() === 'passed'" class="py-10 text...
+          ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:233:15:
+      233 │           <div *ngIf="quizState() === 'passed'" class="py-10 text...
+          ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:233:74:
+      233 │ ...uizState() === 'passed'" class="py-10 text-center" [@softReveal]>
+          ╵                                                       ~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:233:74:
+      233 │ ...uizState() === 'passed'" class="py-10 text-center" [@softReveal]>
+          ╵                                                       ~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:238:59:
+      238 │ ... #9A8FA8">You got {{ correctCount() }} out of {{ quizQuestions...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:238:59:
+      238 │ ... #9A8FA8">You got {{ correctCount() }} out of {{ quizQuestions...
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:239:17:
+      239 │             <div *ngIf="quizResult() as result" class="mt-3 inlin...
+          ╵                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:239:17:
+      239 │             <div *ngIf="quizResult() as result" class="mt-3 inlin...
+          ╵                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:240:14:
+      240 │               Score: {{ result.scorePercentage | number:'1.0-0' }}%
+          ╵               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:240:14:
+      240 │               Score: {{ result.scorePercentage | number:'1.0-0' }}%
+          ╵               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:242:48:
+      242 │ ...t-stroked-button (click)="resetQuiz()" class="!mt-4 !rounded-f...
+          ╵                              ~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:242:48:
+      242 │ ...t-stroked-button (click)="resetQuiz()" class="!mt-4 !rounded-f...
+          ╵                              ~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:250:117:
+      250 │ ...o-[#fff]" *ngIf="quizState() === 'passed' || currentModule()?....
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:250:117:
+      250 │ ...o-[#fff]" *ngIf="quizState() === 'passed' || currentModule()?....
+          ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:259:66:
+      259 │ ...l font-bold" style="color: #7B5A9A">+{{ earnedPoints() }} ✨</p>
+          ╵                                        ~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:259:66:
+      259 │ ...l font-bold" style="color: #7B5A9A">+{{ earnedPoints() }} ✨</p>
+          ╵                                        ~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:265:20:
+      265 │                     *ngFor="let mood of reflectionOptions"
+          ╵                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:265:20:
+      265 │                     *ngFor="let mood of reflectionOptions"
+          ╵                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:266:29:
+      266 │                     (click)="selectReflectionMood(mood)"
+          ╵                              ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:266:29:
+      266 │                     (click)="selectReflectionMood(mood)"
+          ╵                              ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:267:44:
+      267 │ ...               [class.!bg-purple-100]="reflectionMood() === mood"
+          ╵                                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:267:44:
+      267 │ ...               [class.!bg-purple-100]="reflectionMood() === mood"
+          ╵                                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:268:48:
+      268 │ ...           [class.!border-purple-200]="reflectionMood() === mood"
+          ╵                                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:268:48:
+      268 │ ...           [class.!border-purple-200]="reflectionMood() === mood"
+          ╵                                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:269:46:
+      269 │ ...             [class.!text-purple-500]="reflectionMood() === mood"
+          ╵                                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:269:46:
+      269 │ ...             [class.!text-purple-500]="reflectionMood() === mood"
+          ╵                                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:270:46:
+      270 │ ...             [class.!border-gray-200]="reflectionMood() !== mood"
+          ╵                                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:270:46:
+      270 │ ...             [class.!border-gray-200]="reflectionMood() !== mood"
+          ╵                                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:271:44:
+      271 │ ...               [class.!text-gray-500]="reflectionMood() !== mood"
+          ╵                                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:271:44:
+      271 │ ...               [class.!text-gray-500]="reflectionMood() !== mood"
+          ╵                                           ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:273:14:
+      273 │               {{ reflectionMoodLabel(mood) }}
+          ╵               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:273:14:
+      273 │               {{ reflectionMoodLabel(mood) }}
+          ╵               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:277:52:
+      277 │ ... class="mt-4 flex items-center gap-2" *ngIf="!reflectionSaved()">
+          ╵                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:277:52:
+      277 │ ... class="mt-4 flex items-center gap-2" *ngIf="!reflectionSaved()">
+          ╵                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:279:32:
+      279 │                     [disabled]="!reflectionMood()"
+          ╵                                 ~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:279:32:
+      279 │                     [disabled]="!reflectionMood()"
+          ╵                                 ~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:280:29:
+      280 │                     (click)="saveReflection()">
+          ╵                              ~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:280:29:
+      280 │                     (click)="saveReflection()">
+          ╵                              ~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#d48fb1'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@198:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:288:15:
+      288 │                *ngIf="reflectionSaved()">
+          ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG5002: Parser Error: Missing expected ) at column 31 in [!q.revealed && ($event.target as HTMLElement).style.borderColor = '#e5e7eb'] in C:/Users/21658/Downloads/test1/frontend/src/app/pages/education/education-detail.component.ts@199:38 [plugin angular-compiler]
+
+    src/app/pages/education/education-detail.component.ts:288:15:
+      288 │                *ngIf="reflectionSaved()">
+          ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] NG9: This expression is not callable.
+  Type 'String' has no call signatures. [plugin angular-compiler]
+
+    src/app/pages/education/education-list.component.ts:60:76:
+      60 │ ...k() > 0">Week {{ currentWeek() }} · {{ trimesterLabel() }}</span>
+         ╵                                          ~~~~~~~~~~~~~~
+
+
+X [ERROR] NG2: Object is possibly 'undefined'. [plugin angular-compiler]
+
+    src/app/pages/education/education-list.component.ts:215:33:
+      215 │ ...span *ngIf="mod.progress?.completionPercentage > 0" class="tex...
+          ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+

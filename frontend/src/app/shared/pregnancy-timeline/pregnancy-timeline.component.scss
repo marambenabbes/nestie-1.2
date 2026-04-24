@@ -1,0 +1,160 @@
+.timeline-container {
+  display: flex;
+  justify-content: center;
+  padding: 0.75rem;
+}
+
+.hero-card {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 24px;
+  padding: 1.5rem 1.75rem 1.75rem;
+  background: radial-gradient(circle at top left, #ffe6f2 0, #ffffff 40%, #f3f4ff 100%);
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.12);
+}
+
+.hero-header {
+  text-align: left;
+  margin-bottom: 1.25rem;
+}
+
+.hero-pill {
+  display: inline-block;
+  padding: 0.15rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(255, 105, 180, 0.12);
+  color: #c2185b;
+}
+
+.hero-title {
+  margin: 0.35rem 0 0.1rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #3f3d56;
+}
+
+.hero-subtitle {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #7c7b92;
+}
+
+.image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 1 / 1;
+  border-radius: 999px;
+  overflow: hidden;
+  background: radial-gradient(circle at 30% 20%, #ffe0ed 0, #fff5fb 35%, #ffffff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 16px 35px rgba(255, 105, 180, 0.3);
+  cursor: pointer;
+}
+
+.baby-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transform: scale(1.85);
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.image-container:hover .baby-image {
+  transform: scale(2.0);
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.18));
+}
+
+  .hover-pop {
+    position: relative;
+    max-width: 260px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(6px) scale(0.96);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+  }
+
+  .hover-pop p {
+    display: inline-block;
+    background: #f9fafb;
+    color: #0f172a;
+    padding: 0.45rem 0.95rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    box-shadow: 0 14px 28px rgba(15, 23, 42, 0.38);
+    backdrop-filter: blur(6px);
+    position: relative;
+  }
+
+  .hover-pop p::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0 8px 8px 8px;
+    border-style: solid;
+    border-color: transparent transparent #f9fafb transparent;
+  }
+
+  .image-container:hover + .hover-pop {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+.hover-message {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 1.1rem;
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.0) 45%, rgba(0, 0, 0, 0.35) 100%);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.image-container:hover .hover-message {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hover-message p {
+  margin: 0;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #c2185b;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.22);
+}
+
+@media (max-width: 640px) {
+  .hero-card {
+    padding: 1.25rem 1.25rem 1.5rem;
+  }
+
+  .hero-title {
+    font-size: 1rem;
+  }
+
+  .image-container {
+    max-width: 300px;
+  }
+}

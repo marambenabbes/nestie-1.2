@@ -1,0 +1,42 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: nestie-education-service
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3307/nestie_education_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true}
+    username: ${SPRING_DATASOURCE_USERNAME:Nestie}
+    password: ${SPRING_DATASOURCE_PASSWORD:Nestie_pass}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+  servlet:
+    multipart:
+      max-file-size: ${EDUCATION_MEDIA_MAX_FILE_SIZE:50MB}
+      max-request-size: ${EDUCATION_MEDIA_MAX_REQUEST_SIZE:50MB}
+
+app:
+  media:
+    upload-dir: ${EDUCATION_MEDIA_UPLOAD_DIR:uploads/education-media}
+    public-base-url: ${EDUCATION_MEDIA_PUBLIC_BASE_URL:http://localhost:8085/education}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+logging:
+  level:
+    com.nestie: DEBUG

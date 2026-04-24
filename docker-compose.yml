@@ -1,0 +1,206 @@
+version: '3.8'
+
+services:
+  # ─── MySQL Database ────────────────────────────────────
+  mysql:
+    image: mysql:8.0
+    container_name: Nestie-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: nestie_auth_db
+      MYSQL_USER: Nestie
+      MYSQL_PASSWORD: Nestie_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init-databases.sql:/docker-entrypoint-initdb.d/init-databases.sql:ro
+    networks:
+      - Nestie-net
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ─── API Gateway ───────────────────────────────────────
+  gateway-service:
+    build:
+      context: ./gateway-service
+      dockerfile: Dockerfile
+    container_name: Nestie-gateway
+    environment:
+      JWT_SECRET: NestieAI-Super-Secret-JWT-Key-2024-Production
+      AUTH_SERVICE_HOST: auth-service
+      PREGNANCY_SERVICE_HOST: pregnancy-service
+      APPOINTMENT_SERVICE_HOST: appointment-service
+      BABY_PREVIEW_SERVICE_HOST: baby-preview-service
+      EDUCATION_SERVICE_HOST: education-service
+      AI_SERVICE_HOST: ai-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - auth-service
+      - pregnancy-service
+      - appointment-service
+      - baby-preview-service
+      - education-service
+    networks:
+      - Nestie-net
+    restart: unless-stopped
+
+  # ─── Auth Service ──────────────────────────────────────
+  auth-service:
+    build:
+      context: ./auth-service
+      dockerfile: Dockerfile
+    container_name: Nestie-auth
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/nestie_auth_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: Nestie
+      SPRING_DATASOURCE_PASSWORD: Nestie_pass
+      JWT_SECRET: NestieAI-Super-Secret-JWT-Key-2024-Production
+      JWT_EXPIRATION: 86400000
+    ports:
+      - "8081:8081"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - Nestie-net
+    restart: unless-stopped
+
+  # ─── Pregnancy Service ─────────────────────────────────
+  pregnancy-service:
+    build:
+      context: ./pregnancy-service
+      dockerfile: Dockerfile
+    container_name: Nestie-pregnancy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/nestie_pregnancy_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: Nestie
+      SPRING_DATASOURCE_PASSWORD: Nestie_pass
+    ports:
+      - "8082:8082"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - Nestie-net
+    restart: unless-stopped
+
+  # ─── Appointment Service ───────────────────────────────
+  appointment-service:
+    build:
+      context: ./appointment-service
+      dockerfile: Dockerfile
+    container_name: Nestie-appointment
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/nestie_appointment_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: Nestie
+      SPRING_DATASOURCE_PASSWORD: Nestie_pass
+    ports:
+      - "8083:8083"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - Nestie-net
+    restart: unless-stopped
+
+  # ─── Baby Preview Service ──────────────────────────────
+  baby-preview-service:
+    build:
+      context: ./baby-preview-service
+      dockerfile: Dockerfile
+    container_name: Nestie-preview
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/nestie_preview_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: Nestie
+      SPRING_DATASOURCE_PASSWORD: Nestie_pass
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      HF_API_TOKEN: ${HF_API_TOKEN:-}
+    ports:
+      - "8084:8084"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - Nestie-net
+    restart: unless-stopped
+
+  # ─── Education Service ─────────────────────────────────
+  education-service:
+    build:
+      context: ./education-service
+      dockerfile: Dockerfile
+    container_name: Nestie-education
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/nestie_education_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: Nestie
+      SPRING_DATASOURCE_PASSWORD: Nestie_pass
+    ports:
+      - "8085:8085"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - Nestie-net
+    restart: unless-stopped
+
+  # ─── FastAPI AI Service ────────────────────────────────
+  ai-service:
+    build:
+      context: ./ai-service
+      dockerfile: Dockerfile
+    container_name: Nestie-ai
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-your-api-key}
+      OPENAI_MODEL: gpt-4
+      BACKEND_URL: http://gateway-service:8080/api
+    ports:
+      - "8000:8000"
+    depends_on:
+      - gateway-service
+    networks:
+      - Nestie-net
+    restart: unless-stopped
+
+  # ─── Angular Frontend ──────────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: Nestie-frontend
+    ports:
+      - "4200:80"
+    depends_on:
+      - gateway-service
+      - ai-service
+    networks:
+      - Nestie-net
+    restart: unless-stopped
+
+  # ─── Nginx Reverse Proxy ───────────────────────────────
+  nginx:
+    image: nginx:alpine
+    container_name: Nestie-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./devops/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - frontend
+      - gateway-service
+      - ai-service
+    networks:
+      - Nestie-net
+    restart: unless-stopped
+
+volumes:
+  mysql_data:
+
+networks:
+  Nestie-net:
+    driver: bridge
