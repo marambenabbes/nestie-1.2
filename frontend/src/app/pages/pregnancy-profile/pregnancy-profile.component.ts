@@ -26,88 +26,68 @@ import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
       <!-- ═══════════════════════════════════════════════════════════ -->
       <!-- HERO SECTION — pregnancy image + welcome                  -->
       <!-- ═══════════════════════════════════════════════════════════ -->
-      <section class="hero-section">
-        <!-- Decorative floating elements -->
-        <div class="hero-bg-decor">
-          <span class="float-circle c1"></span>
-          <span class="float-circle c2"></span>
-          <span class="float-circle c3"></span>
-          <span class="float-sparkle s1">✨</span>
-          <span class="float-sparkle s2">🌸</span>
-          <span class="float-sparkle s3">💕</span>
-        </div>
+    <section class="hero-section">
 
-        <div class="hero-content">
-          <!-- Left: Text area -->
-          <div class="hero-text">
-            <span class="hero-badge">
-              <span class="badge-dot"></span>
-              Month {{ currentMonth + 1 }} · Week {{ calculatedWeek }}
-            </span>
-            <h1 class="hero-title">
-              Hello, Beautiful Mama <span class="wave">💕</span>
-            </h1>
-            <p class="hero-subtitle">
-              {{ getHeroMessage() }}
-            </p>
-            <div class="hero-stats">
-              <div class="stat-pill">
-                <span class="stat-icon">📅</span>
-                <div>
-                  <span class="stat-value">{{ calculatedDaysUntilDue > 0 ? calculatedDaysUntilDue : '🎉' }}</span>
-                  <span class="stat-label">{{ calculatedDaysUntilDue > 0 ? 'Days Left' : 'Due!' }}</span>
-                </div>
-              </div>
-              <div class="stat-pill">
-                <span class="stat-icon">🤰</span>
-                <div>
-                  <span class="stat-value">{{ calculatedWeek }}<small>+{{ calculatedDay }}d</small></span>
-                  <span class="stat-label">Current Week</span>
-                </div>
-              </div>
-              <div class="stat-pill">
-                <span class="stat-icon">🌙</span>
-                <div>
-                  <span class="stat-value">{{ calculatedTrimester }}</span>
-                  <span class="stat-label">Trimester</span>
-                </div>
-              </div>
-            </div>
-          </div>
+  <!-- Full Background Image -->
+  <img
+    [src]="pregnancyMonths[currentMonth]"
+    [alt]="'Pregnancy Month ' + (currentMonth + 1)"
+    class="hero-bg-image"
+  />
 
-          <!-- Right: Pregnancy image -->
-          <div class="hero-image-area">
-            <div class="image-glow"></div>
-            <div class="image-ring"></div>
-            <div class="pregnancy-image-container" (mouseenter)="showBabyMsg = true" (mouseleave)="showBabyMsg = false">
-              <img
-                [src]="pregnancyMonths[currentMonth]"
-                [alt]="'Pregnancy Month ' + (currentMonth + 1)"
-                class="pregnancy-image"
-                loading="lazy"
-              />
-              <!-- Hover tooltip on baby -->
-              <div class="baby-hover-tooltip" [class.visible]="showBabyMsg">
-                <div class="tooltip-bubble">
-                  <span class="tooltip-emoji">👶</span>
-                  <p>Hey mommy, I'm in month {{ currentMonth + 1 }} 🍼</p>
-                </div>
-              </div>
-            </div>
+  <!-- Berry fade overlay -->
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <div class="hero-text">
+      <span class="hero-badge">
+        <span class="badge-dot"></span>
+        Month {{ currentMonth + 1 }} · Week {{ calculatedWeek }}
+      </span>
+      <h1 class="hero-title">
+        Hello, Beautiful Mama <span class="wave">💕</span>
+      </h1>
+      <p class="hero-subtitle">
+        {{ getHeroMessage() }}
+      </p>
+      <div class="hero-stats">
+        <div class="stat-pill">
+          <span class="stat-icon">📅</span>
+          <div>
+            <span class="stat-value">{{ calculatedDaysUntilDue > 0 ? calculatedDaysUntilDue : '🎉' }}</span>
+            <span class="stat-label">{{ calculatedDaysUntilDue > 0 ? 'Days Left' : 'Due!' }}</span>
           </div>
         </div>
-
-        <!-- Action buttons -->
-        <div class="hero-actions">
-          <button class="btn-edit" (click)="editProfile()">
-            <mat-icon>edit</mat-icon>
-            <span>Edit Profile</span>
-          </button>
-          <button class="btn-delete" (click)="deleteProfile()">
-            <mat-icon>delete_outline</mat-icon>
-          </button>
+        <div class="stat-pill">
+          <span class="stat-icon">🤰</span>
+          <div>
+            <span class="stat-value">{{ calculatedWeek }}<small>+{{ calculatedDay }}d</small></span>
+            <span class="stat-label">Current Week</span>
+          </div>
         </div>
-      </section>
+        <div class="stat-pill">
+          <span class="stat-icon">🌙</span>
+          <div>
+            <span class="stat-value">{{ calculatedTrimester }}</span>
+            <span class="stat-label">Trimester</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Action buttons -->
+  <div class="hero-actions">
+    <button class="btn-edit" (click)="editProfile()">
+      <mat-icon>edit</mat-icon>
+      <span>Edit Profile</span>
+    </button>
+    <button class="btn-delete" (click)="deleteProfile()">
+      <mat-icon>delete_outline</mat-icon>
+    </button>
+  </div>
+
+</section>
 
       <!-- ═══════════════════════════════════════════════════════════ -->
       <!-- INFO CARDS                                                 -->
@@ -334,57 +314,67 @@ import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
     }
 
     /* ─── HERO SECTION ─── */
-    .hero-section {
-      position: relative;
-      padding: 2rem 2rem 1.5rem;
-      border-radius: 28px;
-      background: linear-gradient(135deg, #fff0f6 0%, #fce4ec 30%, #f3e5f5 60%, #ede7f6 100%);
-      overflow: hidden;
-      margin-bottom: 1.75rem;
-      box-shadow: 0 20px 60px rgba(244, 143, 177, 0.15);
-    }
+   .hero-section {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* text goes to bottom */
+  margin-bottom: 1.75rem;
+}
 
-    .hero-bg-decor {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
-    .float-circle {
-      position: absolute;
-      border-radius: 50%;
-      opacity: 0.12;
-    }
-    .c1 { width: 200px; height: 200px; background: #f48fb1; top: -40px; right: -30px; animation: floatSlow 8s ease-in-out infinite; }
-    .c2 { width: 120px; height: 120px; background: #ce93d8; bottom: -20px; left: 10%; animation: floatSlow 10s ease-in-out infinite reverse; }
-    .c3 { width: 80px; height: 80px; background: #ffab91; top: 50%; left: 5%; animation: floatSlow 7s ease-in-out 1s infinite; }
+.hero-bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: right center;
+  z-index: 0;
+  -webkit-mask-image: radial-gradient(
+    ellipse 70% 80% at 75% 50%,
+    black 40%,
+    rgba(0,0,0,0.6) 60%,
+    rgba(0,0,0,0.2) 75%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 70% 80% at 75% 50%,
+    black 40%,
+    rgba(0,0,0,0.6) 60%,
+    rgba(0,0,0,0.2) 75%,
+    transparent 100%
+  );
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(255, 245, 247, 0.95) 0%,
+    rgba(255, 245, 247, 0.70) 25%,
+    rgba(255, 245, 247, 0.30) 50%,
+    rgba(255, 245, 247, 0.05) 68%,
+    rgba(255, 245, 247, 0) 75%
+  );
+  z-index: 1;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 2.5rem 2rem; /* no top padding, text stays low */
+}
 
-    .float-sparkle {
-      position: absolute;
-      font-size: 1.2rem;
-      opacity: 0.5;
-      animation: sparkleFloat 5s ease-in-out infinite;
-    }
-    .s1 { top: 12%; left: 8%; animation-delay: 0s; }
-    .s2 { top: 65%; right: 12%; animation-delay: 1.5s; }
-    .s3 { bottom: 15%; left: 35%; animation-delay: 3s; }
-
-    @keyframes floatSlow {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-15px) scale(1.05); }
-    }
-    @keyframes sparkleFloat {
-      0%, 100% { transform: translateY(0) rotate(0); opacity: 0.5; }
-      50% { transform: translateY(-10px) rotate(15deg); opacity: 0.8; }
-    }
-
-    .hero-content {
-      display: flex;
-      align-items: center;
-      gap: 2.5rem;
-      position: relative;
-      z-index: 2;
-    }
+.hero-actions {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 0.75rem;
+  padding: 0 2.5rem 1.75rem;
+  justify-content: flex-end;
+}
 
     .hero-text {
       flex: 1;
@@ -400,14 +390,14 @@ import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
       font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.03em;
-      background: rgba(244, 143, 177, 0.15);
-      color: #c2185b;
+      background: rgba(212, 83, 126, 0.12);
+      color: var(--mama-rose-deep);
       backdrop-filter: blur(8px);
     }
     .badge-dot {
       width: 6px; height: 6px;
       border-radius: 50%;
-      background: #e91e63;
+      background: var(--mama-rose);
       animation: pulse 2s ease-in-out infinite;
     }
     @keyframes pulse {
@@ -418,10 +408,11 @@ import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
     .hero-title {
       margin: 0.75rem 0 0.5rem;
       font-size: 1.75rem;
-      font-weight: 700;
-      color: #3f3d56;
-      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      color: var(--mama-berry);
+      font-family: 'Outfit', sans-serif;
       line-height: 1.3;
+      letter-spacing: -0.02em;
     }
     .wave {
       display: inline-block;
@@ -435,7 +426,7 @@ import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
 
     .hero-subtitle {
       font-size: 0.9rem;
-      color: #7c7b92;
+      color: var(--mama-lavender-dark);
       line-height: 1.6;
       margin: 0 0 1.25rem;
       max-width: 400px;
@@ -467,18 +458,18 @@ import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
       display: block;
       font-size: 1.1rem;
       font-weight: 700;
-      color: #3f3d56;
+      color: var(--mama-berry);
       line-height: 1.2;
     }
     .stat-value small {
       font-size: 0.65rem;
       font-weight: 500;
-      color: #a9a8bf;
+      color: var(--mama-lavender-dark);
     }
     .stat-label {
       display: block;
       font-size: 0.65rem;
-      color: #a9a8bf;
+      color: var(--mama-lavender-dark);
       letter-spacing: 0.02em;
     }
 
@@ -497,7 +488,7 @@ import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
       position: absolute;
       inset: -15px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(244, 143, 177, 0.25) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(212, 83, 126, 0.2) 0%, transparent 70%);
       animation: glowPulse 3s ease-in-out infinite;
     }
     @keyframes glowPulse {
@@ -509,7 +500,7 @@ import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
       position: absolute;
       inset: -4px;
       border-radius: 50%;
-      border: 2.5px dashed rgba(206, 147, 216, 0.35);
+      border: 2.5px dashed rgba(201, 141, 184, 0.35);
       animation: spinSlow 25s linear infinite;
     }
     @keyframes spinSlow { to { transform: rotate(360deg); } }
@@ -520,11 +511,11 @@ import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
       height: 250px;
       border-radius: 50%;
       overflow: hidden;
-      background: radial-gradient(circle at 30% 20%, #ffe0ed 0%, #fff5fb 35%, #ffffff 100%);
+      background: radial-gradient(circle at 30% 20%, var(--mama-pink-light) 0%, var(--mama-blush) 35%, #ffffff 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 16px 50px rgba(244, 143, 177, 0.25);
+      box-shadow: 0 16px 50px rgba(212, 83, 126, 0.2);
       cursor: pointer;
       transition: transform 0.4s ease;
       z-index: 2;
@@ -569,8 +560,8 @@ import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(12px);
-      box-shadow: 0 12px 36px rgba(194, 24, 91, 0.18);
-      border: 1px solid rgba(244, 143, 177, 0.3);
+      box-shadow: 0 12px 36px rgba(153, 53, 86, 0.18);
+      border: 1px solid rgba(232, 196, 216, 0.3);
       white-space: nowrap;
     }
     .tooltip-emoji { font-size: 1.2rem; animation: bounce 1.5s ease-in-out infinite; }
@@ -582,7 +573,7 @@ import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
       margin: 0;
       font-size: 0.8rem;
       font-weight: 600;
-      color: #c2185b;
+      color: var(--mama-rose-deep);
       font-family: 'Poppins', sans-serif;
     }
 
@@ -602,18 +593,18 @@ import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
       padding: 0.55rem 1.4rem;
       border-radius: 999px;
       border: none;
-      background: linear-gradient(135deg, #f48fb1, #ce93d8);
+      background: linear-gradient(135deg, var(--mama-rose), var(--mama-purple));
       color: #fff;
       font-size: 0.82rem;
       font-weight: 600;
       font-family: 'Poppins', sans-serif;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 6px 20px rgba(244, 143, 177, 0.35);
+      box-shadow: 0 6px 20px rgba(212, 83, 126, 0.3);
     }
     .btn-edit:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(244, 143, 177, 0.45);
+      box-shadow: 0 10px 30px rgba(212, 83, 126, 0.4);
     }
     .btn-edit mat-icon { font-size: 18px; width: 18px; height: 18px; }
     .btn-delete {
@@ -630,24 +621,24 @@ import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
       transition: all 0.3s ease;
     }
     .btn-delete:hover {
-      background: #fce4ec;
+      background: var(--mama-pink-light);
       color: #e53935;
     }
     .btn-delete mat-icon { font-size: 20px; width: 20px; height: 20px; }
 
     /* ─── GLASS CARDS ─── */
     .glass-card {
-      background: rgba(255, 255, 255, 0.75);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(232, 196, 216, 0.2);
       border-radius: 24px;
-      box-shadow: 0 12px 40px rgba(225, 190, 231, 0.12);
+      box-shadow: 0 12px 40px rgba(200, 141, 184, 0.12);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .glass-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 18px 50px rgba(244, 143, 177, 0.18);
+      box-shadow: 0 18px 50px rgba(212, 83, 126, 0.18);
     }
 
     /* ─── INFO GRID ─── */
@@ -675,13 +666,13 @@ import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
       justify-content: center;
     }
     .card-icon mat-icon { color: #fff; font-size: 22px; width: 22px; height: 22px; }
-    .pink-icon { background: linear-gradient(135deg, #f48fb1, #f06292); }
-    .purple-icon { background: linear-gradient(135deg, #ce93d8, #ba68c8); }
+    .pink-icon { background: linear-gradient(135deg, var(--mama-pink-dark), var(--mama-rose)); }
+    .purple-icon { background: linear-gradient(135deg, var(--mama-lavender-dark), var(--mama-purple)); }
     .card-header h3 {
       margin: 0;
       font-size: 1rem;
       font-weight: 600;
-      color: #3f3d56;
+      color: var(--mama-berry);
       font-family: 'Poppins', sans-serif;
     }
 
@@ -691,10 +682,10 @@ import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
       justify-content: space-between;
       align-items: center;
       padding: 0.45rem 0;
-      border-bottom: 1px solid rgba(225, 190, 231, 0.12);
+      border-bottom: 1px solid rgba(232, 196, 216, 0.12);
     }
     .info-row:last-child { border-bottom: none; }
-    .info-label { font-size: 0.82rem; color: #9e9eb8; }
+    .info-label { font-size: 0.82rem; color: var(--mama-lavender-dark); }
     .info-value {
       font-size: 0.85rem;
       font-weight: 500;
@@ -703,14 +694,14 @@ import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
     .info-value.badge-value {
       padding: 0.2rem 0.7rem;
       border-radius: 999px;
-      background: rgba(244, 143, 177, 0.1);
-      color: #c2185b;
+      background: rgba(212, 83, 126, 0.1);
+      color: var(--mama-rose-deep);
       font-weight: 600;
       font-size: 0.8rem;
     }
-    .info-value.highlight { color: #e91e63; font-weight: 600; }
-    .info-value.highlight-rose { color: #e91e63; font-weight: 600; }
-    .info-value.highlight-purple { color: #9c27b0; font-weight: 600; }
+    .info-value.highlight { color: var(--mama-rose); font-weight: 600; }
+    .info-value.highlight-rose { color: var(--mama-rose); font-weight: 600; }
+    .info-value.highlight-purple { color: var(--mama-purple); font-weight: 600; }
 
     .status-badge {
       display: inline-block;
@@ -743,12 +734,12 @@ import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
       justify-content: center;
     }
     .section-icon mat-icon { color: #fff; font-size: 22px; width: 22px; height: 22px; }
-    .advice-icon { background: linear-gradient(135deg, #ba68c8, #9c27b0); }
+    .advice-icon { background: linear-gradient(135deg, var(--mama-lavender-dark), var(--mama-purple)); }
     .section-header h2 {
       margin: 0;
       font-size: 1.1rem;
       font-weight: 600;
-      color: #3f3d56;
+      color: var(--mama-berry);
       font-family: 'Poppins', sans-serif;
     }
     .unread-badge {
@@ -771,17 +762,17 @@ import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
       border-radius: 20px;
       background: rgba(255, 255, 255, 0.7);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(225, 190, 231, 0.15);
+      border: 1px solid rgba(232, 196, 216, 0.15);
       cursor: pointer;
       transition: all 0.3s ease;
     }
     .advice-card:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(225, 190, 231, 0.2);
+      box-shadow: 0 10px 30px rgba(200, 141, 184, 0.2);
     }
     .advice-card.unread {
-      border-left: 3px solid #e91e63;
-      background: linear-gradient(135deg, rgba(252, 228, 236, 0.6) 0%, rgba(243, 229, 245, 0.4) 100%);
+      border-left: 3px solid var(--mama-rose);
+      background: linear-gradient(135deg, rgba(252, 228, 236, 0.6) 0%, rgba(249, 238, 244, 0.4) 100%);
     }
     .advice-top {
       display: flex;
@@ -791,7 +782,7 @@ import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
     }
     .advice-cat-icon { font-size: 1.5rem; }
     .advice-meta { flex: 1; }
-    .advice-meta h4 { margin: 0 0 0.35rem; font-size: 0.9rem; font-weight: 600; color: #3f3d56; }
+    .advice-meta h4 { margin: 0 0 0.35rem; font-size: 0.9rem; font-weight: 600; color: var(--mama-berry); }
     .advice-badges { display: flex; flex-wrap: wrap; gap: 0.4rem; }
     .advice-badge {
       padding: 0.15rem 0.55rem;
@@ -816,14 +807,14 @@ import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
       padding: 0.75rem 1rem;
       border-radius: 14px;
       background: rgba(255, 255, 255, 0.8);
-      border: 1px solid rgba(206, 147, 216, 0.2);
+      border: 1px solid rgba(201, 141, 184, 0.2);
       margin-bottom: 0.75rem;
     }
     .actions-label {
       margin: 0 0 0.25rem;
       font-size: 0.72rem;
       font-weight: 700;
-      color: #9c27b0;
+      color: var(--mama-purple);
     }
     .actions-text { margin: 0; font-size: 0.8rem; color: #555; }
     .advice-footer {
@@ -831,7 +822,7 @@ import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
       font-size: 0.72rem;
       color: #aaa;
     }
-    .advice-footer strong { color: #9c27b0; }
+    .advice-footer strong { color: var(--mama-purple); }
 
     /* Badge colors */
     .bg-green-100 { background: rgba(76, 175, 80, 0.12); }
@@ -865,7 +856,7 @@ import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
     .form-icon {
       width: 50px; height: 50px;
       border-radius: 16px;
-      background: linear-gradient(135deg, #f48fb1, #ce93d8);
+      background: linear-gradient(135deg, var(--mama-rose), var(--mama-purple));
       display: flex;
       align-items: center;
       justify-content: center;
@@ -875,10 +866,10 @@ import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
       margin: 0;
       font-size: 1.2rem;
       font-weight: 700;
-      color: #3f3d56;
-      font-family: 'Poppins', sans-serif;
+      color: var(--mama-berry);
+      font-family: 'Outfit', sans-serif;
     }
-    .form-header p { margin: 0.2rem 0 0; font-size: 0.82rem; color: #9e9eb8; }
+    .form-header p { margin: 0.2rem 0 0; font-size: 0.82rem; color: var(--mama-lavender-dark); }
 
     .profile-form {
       display: flex;

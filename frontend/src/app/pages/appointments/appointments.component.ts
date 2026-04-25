@@ -21,17 +21,17 @@ import { Appointment, User } from '../../core/models/models';
   imports: [CommonModule, ReactiveFormsModule, MatCardModule, MatIconModule, MatButtonModule, MatChipsModule,
             MatFormFieldModule, MatInputModule, MatSelectModule, MatSnackBarModule, MatTooltipModule, MatMenuModule],
   template: `
-    <div class="space-y-6 animate-fade-in">
+    <div class="space-y-8 animate-fade-in">
       <div class="flex items-center justify-between">
-        <h1 class="text-2xl font-poppins font-bold text-gray-800">Appointments 📅</h1>
+        <h1 class="text-2xl font-bold" style="font-family:'Outfit',sans-serif;color:var(--mama-berry)">Appointments 📅</h1>
         <button mat-raised-button (click)="toggleForm()"
-                class="!rounded-full !bg-gradient-to-r !from-mama-pink-dark !to-mama-lavender-dark !text-white">
+                class="!rounded-full !text-white" style="background:linear-gradient(135deg,var(--mama-rose),var(--mama-rose-deep))!important;box-shadow:0 6px 20px rgba(212,83,126,0.25)">
           <mat-icon>{{ showForm ? 'close' : 'add' }}</mat-icon> {{ showForm ? 'Cancel' : 'Book Appointment' }}
         </button>
       </div>
 
       <!-- Booking Form -->
-      <mat-card *ngIf="showForm" class="!rounded-cute !shadow-card p-6 appointments-form max-w-3xl mx-auto">
+      <mat-card *ngIf="showForm" class="!rounded-cute !shadow-card p-6 appointments-form max-w-3xl mx-auto" style="background:rgba(255,255,255,0.7);backdrop-filter:blur(20px);border:1px solid rgba(232,196,216,0.2)">
         <h3 class="text-lg font-poppins font-semibold text-mama-rose mb-4 flex items-center">
           <mat-icon class="mr-2">{{ editingId ? 'edit' : 'event_available' }}</mat-icon>
           {{ editingId ? 'Edit Appointment' : 'New Appointment' }}

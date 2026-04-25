@@ -8,8 +8,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: nestie_auth_db
-      MYSQL_USER: Nestie
-      MYSQL_PASSWORD: Nestie_pass
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ""
     ports:
       - "3306:3306"
     volumes:
@@ -57,8 +57,8 @@ services:
     container_name: Nestie-auth
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/nestie_auth_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&createDatabaseIfNotExist=true
-      SPRING_DATASOURCE_USERNAME: Nestie
-      SPRING_DATASOURCE_PASSWORD: Nestie_pass
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: ""
       JWT_SECRET: NestieAI-Super-Secret-JWT-Key-2024-Production
       JWT_EXPIRATION: 86400000
     ports:
@@ -78,8 +78,8 @@ services:
     container_name: Nestie-pregnancy
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/nestie_pregnancy_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&createDatabaseIfNotExist=true
-      SPRING_DATASOURCE_USERNAME: Nestie
-      SPRING_DATASOURCE_PASSWORD: Nestie_pass
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: ""
     ports:
       - "8082:8082"
     depends_on:
@@ -97,8 +97,8 @@ services:
     container_name: Nestie-appointment
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/nestie_appointment_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&createDatabaseIfNotExist=true
-      SPRING_DATASOURCE_USERNAME: Nestie
-      SPRING_DATASOURCE_PASSWORD: Nestie_pass
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: ""
     ports:
       - "8083:8083"
     depends_on:
@@ -116,8 +116,8 @@ services:
     container_name: Nestie-preview
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/nestie_preview_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&createDatabaseIfNotExist=true
-      SPRING_DATASOURCE_USERNAME: Nestie
-      SPRING_DATASOURCE_PASSWORD: Nestie_pass
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: ""
       GEMINI_API_KEY: ${GEMINI_API_KEY:-}
       HF_API_TOKEN: ${HF_API_TOKEN:-}
     ports:
@@ -137,8 +137,8 @@ services:
     container_name: Nestie-education
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/nestie_education_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&createDatabaseIfNotExist=true
-      SPRING_DATASOURCE_USERNAME: Nestie
-      SPRING_DATASOURCE_PASSWORD: Nestie_pass
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: ""
     ports:
       - "8085:8085"
     depends_on:

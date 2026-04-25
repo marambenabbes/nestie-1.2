@@ -50,7 +50,7 @@ interface RateLimitInfo {
         <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-mama-pink to-mama-lavender mb-3 shadow-lg">
           <mat-icon class="!text-3xl text-white">child_care</mat-icon>
         </div>
-        <h1 class="text-3xl font-bold text-mama-rose mb-2">AI Baby Preview</h1>
+        <h1 class="text-3xl font-bold mb-2" style="font-family:'Outfit',sans-serif;color:var(--mama-berry)">AI Baby Preview</h1>
         <p class="text-gray-500 max-w-lg mx-auto">Upload parent photos and let AI imagine what your little one might look like! 🍼</p>
 
         <!-- Rate Limit Badge -->
@@ -94,15 +94,15 @@ interface RateLimitInfo {
         <mat-card class="!rounded-2xl !shadow-card hover:!shadow-lg transition-shadow duration-300 overflow-hidden">
           <div class="p-6 text-center">
             <div class="mb-4">
-              <mat-icon class="!text-5xl text-blue-400">face_6</mat-icon>
+              <mat-icon class="!text-5xl" style="color:var(--mama-lavender-dark)">face_6</mat-icon>
               <h3 class="font-semibold text-gray-700 mt-2">Father's Photo</h3>
             </div>
             <div *ngIf="!fatherPreview()"
                  (click)="fatherInput.click()"
                  (dragover)="onDragOver($event)"
                  (drop)="onDrop($event, 'father')"
-                 class="border-2 border-dashed border-blue-200 rounded-2xl p-8 cursor-pointer hover:border-blue-400 hover:bg-blue-50/30 transition-all duration-200">
-              <mat-icon class="!text-4xl text-blue-300/50 mb-2">cloud_upload</mat-icon>
+                 class="border-2 border-dashed rounded-2xl p-8 cursor-pointer transition-all duration-200" style="border-color:var(--mama-lavender);" onmouseenter="this.style.borderColor='var(--mama-lavender-dark)';this.style.background='var(--mama-lavender-light)'" onmouseleave="this.style.borderColor='var(--mama-lavender)';this.style.background=''">
+              <mat-icon class="!text-4xl mb-2" style="color:var(--mama-lavender)">cloud_upload</mat-icon>
               <p class="text-sm text-gray-400">Click or drag & drop a photo</p>
               <p class="text-xs text-gray-300 mt-1">JPG, PNG — max 5 MB</p>
             </div>

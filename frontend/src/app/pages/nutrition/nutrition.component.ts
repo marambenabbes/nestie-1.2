@@ -38,14 +38,14 @@ import { NutritionCalendarComponent } from './components/nutrition-calendar.comp
     <div class="space-y-5 animate-fade-in">
       <!-- Header -->
       <div class="flex items-center justify-between">
-        <h1 class="text-2xl font-bold text-gray-800">Nutrition Planner 🥗</h1>
+        <h1 class="text-2xl font-bold" style="font-family:'Outfit',sans-serif;color:var(--mama-berry)">Nutrition Planner 🥗</h1>
         <div class="flex gap-2">
           <button mat-raised-button (click)="openCountryModal()" [disabled]="loadingAi"
-                  class="!rounded-full !bg-gradient-to-r !from-mama-lavender-dark !to-mama-purple !text-white">
+                  class="!rounded-full !text-white" style="background:linear-gradient(135deg,var(--mama-lavender-dark),var(--mama-purple))!important;box-shadow:0 6px 20px rgba(168,91,143,0.25)">
             <mat-icon>smart_toy</mat-icon> {{ loadingAi ? 'Generating...' : 'AI Generate' }}
           </button>
           <button mat-raised-button (click)="openForm()"
-                  class="!rounded-full !bg-gradient-to-r !from-mama-peach-dark !to-mama-pink-dark !text-white">
+                  class="!rounded-full !text-white" style="background:linear-gradient(135deg,var(--mama-rose),var(--mama-rose-deep))!important;box-shadow:0 6px 20px rgba(212,83,126,0.25)">
             <mat-icon>add</mat-icon> Add Meal
           </button>
         </div>
@@ -222,7 +222,7 @@ import { NutritionCalendarComponent } from './components/nutrition-calendar.comp
               <div class="flex gap-3 justify-end">
                 <button mat-button type="button" (click)="closeForm()" class="!rounded-full">Cancel</button>
                 <button mat-raised-button type="submit" [disabled]="mealForm.invalid || saving"
-                        class="!rounded-full !bg-gradient-to-r !from-mama-pink-dark !to-mama-lavender-dark !text-white">
+                        class="!rounded-full !text-white" style="background:linear-gradient(135deg,var(--mama-rose),var(--mama-rose-deep))!important;box-shadow:0 6px 20px rgba(212,83,126,0.25)">
                   {{ saving ? 'Saving...' : (editingId ? 'Update Meal' : 'Save Meal') }}
                 </button>
               </div>

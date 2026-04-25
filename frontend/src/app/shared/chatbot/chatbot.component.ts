@@ -13,48 +13,47 @@ import { ChatMessage } from '../../core/models/models';
   template: `
     <!-- Floating Trigger -->
     <button *ngIf="!isOpen" (click)="open()"
-      class="fixed bottom-6 right-6 w-16 h-16 rounded-full bg-gradient-to-br from-mama-pink-dark to-mama-lavender-dark
-             text-white shadow-2xl flex items-center justify-center hover:scale-110 transition-all z-50 animate-bounce-gentle">
+      class="chat-trigger">
       <mat-icon class="!text-3xl">smart_toy</mat-icon>
+      <span class="chat-pulse"></span>
     </button>
 
     <!-- Chat Window -->
-    <div *ngIf="isOpen"
-      class="fixed bottom-6 right-6 w-96 h-[520px] bg-white rounded-3xl shadow-2xl flex flex-col z-50 overflow-hidden border border-mama-pink/30">
+    <div *ngIf="isOpen" class="chat-window">
       <!-- Header -->
-      <div class="bg-gradient-to-r from-mama-pink-dark to-mama-lavender-dark p-4 flex items-center justify-between">
+      <div class="chat-header">
         <div class="flex items-center">
-          <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-3">
-            <mat-icon class="text-white">smart_toy</mat-icon>
+          <div class="chat-avatar">
+            <mat-icon class="text-white !text-lg">smart_toy</mat-icon>
           </div>
           <div>
-            <h4 class="text-white font-poppins font-semibold text-sm">Nestie AI</h4>
-            <p class="text-white/70 text-xs">Your pregnancy assistant 🌸</p>
+            <h4 class="text-white font-outfit font-semibold text-sm">Nestie AI</h4>
+            <p class="text-white/60 text-xs">Your pregnancy assistant 🌸</p>
           </div>
         </div>
         <div class="flex items-center gap-1">
           <button mat-icon-button (click)="clearChat()" class="!w-8 !h-8" title="Clear chat">
-            <mat-icon class="text-white/70 hover:text-white !text-lg">delete_sweep</mat-icon>
+            <mat-icon class="text-white/60 hover:text-white !text-lg">delete_sweep</mat-icon>
           </button>
-          <button mat-icon-button (click)="isOpen = false"><mat-icon class="text-white">close</mat-icon></button>
+          <button mat-icon-button (click)="isOpen = false">
+            <mat-icon class="text-white">close</mat-icon>
+          </button>
         </div>
       </div>
 
       <!-- Messages -->
-      <div class="flex-1 overflow-y-auto p-4 space-y-3" #chatContainer>
+      <div class="chat-messages" #chatContainer>
         <div *ngFor="let msg of messages" [class]="msg.role === 'user' ? 'flex justify-end' : 'flex justify-start'">
-          <div [class]="msg.role === 'user'
-            ? 'bg-gradient-to-br from-mama-pink to-mama-lavender text-white rounded-2xl rounded-br-sm px-4 py-2 max-w-[80%]'
-            : 'bg-mama-cream text-gray-700 rounded-2xl rounded-bl-sm px-4 py-2 max-w-[80%]'">
+          <div [class]="msg.role === 'user' ? 'chat-bubble-user' : 'chat-bubble-ai'">
             <p class="text-sm whitespace-pre-wrap">{{ msg.content }}</p>
           </div>
         </div>
         <div *ngIf="isLoading" class="flex justify-start">
-          <div class="bg-mama-cream rounded-2xl rounded-bl-sm px-4 py-3">
-            <div class="flex space-x-1">
-              <div class="w-2 h-2 bg-mama-pink rounded-full animate-bounce" style="animation-delay: 0ms"></div>
-              <div class="w-2 h-2 bg-mama-lavender rounded-full animate-bounce" style="animation-delay: 150ms"></div>
-              <div class="w-2 h-2 bg-mama-peach rounded-full animate-bounce" style="animation-delay: 300ms"></div>
+          <div class="chat-bubble-ai">
+            <div class="flex space-x-1.5">
+              <div class="typing-dot" style="animation-delay: 0ms"></div>
+              <div class="typing-dot" style="animation-delay: 150ms"></div>
+              <div class="typing-dot" style="animation-delay: 300ms"></div>
             </div>
           </div>
         </div>
@@ -63,23 +62,23 @@ import { ChatMessage } from '../../core/models/models';
       <!-- Quick Actions -->
       <div *ngIf="messages.length <= 2" class="px-4 py-2 flex gap-2 overflow-x-auto">
         <button *ngFor="let q of quickQuestions" (click)="sendMessage(q)"
-          class="whitespace-nowrap text-xs bg-mama-pink-light text-mama-rose px-3 py-1 rounded-full hover:bg-mama-pink transition-all">
+          class="quick-pill">
           {{ q }}
         </button>
       </div>
 
       <!-- Connection status -->
-      <div *ngIf="connectionError" class="px-4 py-1 bg-red-50 text-center">
+      <div *ngIf="connectionError" class="px-4 py-1.5 bg-red-50/80 text-center border-t border-red-100">
         <span class="text-xs text-red-500">⚠️ AI service offline — make sure the AI server is running on port 8000</span>
       </div>
 
       <!-- Input -->
-      <div class="p-3 border-t border-gray-100 flex items-center gap-2">
+      <div class="chat-input-area">
         <input [(ngModel)]="inputMessage" (keyup.enter)="sendMessage(inputMessage)"
           placeholder="Ask me anything... 💬"
-          class="flex-1 bg-gray-50 rounded-full px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-mama-pink/50 transition-all" />
+          class="chat-input" />
         <button (click)="sendMessage(inputMessage)"
-          class="w-10 h-10 rounded-full bg-gradient-to-br from-mama-pink-dark to-mama-lavender-dark text-white flex items-center justify-center hover:scale-105 transition-all"
+          class="chat-send"
           [disabled]="!inputMessage.trim() || isLoading">
           <mat-icon class="!text-xl">send</mat-icon>
         </button>
@@ -87,11 +86,190 @@ import { ChatMessage } from '../../core/models/models';
     </div>
   `,
   styles: [`
-    @keyframes bounce-gentle {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
+    /* ─── TRIGGER ─── */
+    .chat-trigger {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--mama-rose), var(--mama-lavender-dark));
+      color: white;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 8px 32px rgba(212, 83, 126, 0.35);
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      z-index: 50;
     }
-    .animate-bounce-gentle { animation: bounce-gentle 2s infinite; }
+    .chat-trigger:hover {
+      transform: scale(1.1) translateY(-2px);
+      box-shadow: 0 12px 40px rgba(212, 83, 126, 0.5);
+    }
+    .chat-pulse {
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px solid var(--mama-rose);
+      opacity: 0;
+      animation: chatPulse 2.5s ease-in-out infinite;
+    }
+    @keyframes chatPulse {
+      0%, 100% { opacity: 0; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.15); }
+    }
+
+    /* ─── WINDOW ─── */
+    .chat-window {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 380px;
+      height: 520px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(232, 196, 216, 0.3);
+      box-shadow: 0 20px 60px rgba(200, 141, 184, 0.2);
+      display: flex;
+      flex-direction: column;
+      z-index: 50;
+      overflow: hidden;
+      animation: chatSlideUp 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    @keyframes chatSlideUp {
+      from { opacity: 0; transform: translateY(20px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* ─── HEADER ─── */
+    .chat-header {
+      background: linear-gradient(135deg, var(--mama-rose-deep), var(--mama-purple));
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .chat-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 0.75rem;
+    }
+    .font-outfit { font-family: 'Outfit', sans-serif; }
+
+    /* ─── MESSAGES ─── */
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .chat-bubble-user {
+      background: linear-gradient(135deg, var(--mama-rose), var(--mama-purple));
+      color: white;
+      border-radius: 18px 18px 4px 18px;
+      padding: 0.6rem 1rem;
+      max-width: 80%;
+    }
+    .chat-bubble-ai {
+      background: var(--mama-blush);
+      color: #4a4a4a;
+      border-radius: 18px 18px 18px 4px;
+      padding: 0.6rem 1rem;
+      max-width: 80%;
+      border: 1px solid rgba(232, 196, 216, 0.15);
+    }
+
+    /* ─── TYPING DOTS ─── */
+    .typing-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--mama-pink);
+      animation: typingBounce 1.2s ease-in-out infinite;
+    }
+    .typing-dot:nth-child(2) { background: var(--mama-lavender); }
+    .typing-dot:nth-child(3) { background: var(--mama-peach); }
+    @keyframes typingBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    /* ─── QUICK PILLS ─── */
+    .quick-pill {
+      white-space: nowrap;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid var(--mama-pink);
+      background: var(--mama-blush);
+      color: var(--mama-rose);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .quick-pill:hover {
+      background: var(--mama-pink);
+      color: var(--mama-berry);
+    }
+
+    /* ─── INPUT ─── */
+    .chat-input-area {
+      padding: 0.75rem;
+      border-top: 1px solid rgba(232, 196, 216, 0.15);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .chat-input {
+      flex: 1;
+      background: var(--mama-blush);
+      border: 1px solid rgba(232, 196, 216, 0.2);
+      border-radius: 999px;
+      padding: 0.6rem 1rem;
+      font-size: 0.85rem;
+      font-family: 'Poppins', sans-serif;
+      outline: none;
+      transition: all 0.2s;
+    }
+    .chat-input:focus {
+      border-color: var(--mama-pink-dark);
+      box-shadow: 0 0 0 3px rgba(212, 83, 126, 0.1);
+    }
+    .chat-send {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--mama-rose), var(--mama-purple));
+      color: white;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .chat-send:hover {
+      transform: scale(1.08);
+      box-shadow: 0 4px 16px rgba(212, 83, 126, 0.3);
+    }
+    .chat-send:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none;
+    }
   `]
 })
 export class ChatbotComponent implements AfterViewChecked {

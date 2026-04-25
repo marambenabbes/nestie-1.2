@@ -19,25 +19,32 @@ import { AuthService } from '../../../core/services/auth.service';
     MatButtonModule, MatIconModule, MatSnackBarModule
   ],
   template: `
-    <div class="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-mama-pink-light via-mama-cream to-mama-lavender-light">
-      <div class="animate-fade-in w-full max-w-md">
+    <div class="auth-page">
+      <!-- Decorative circles -->
+      <div class="deco-circle" style="width:300px;height:300px;background:var(--mama-pink);top:-80px;right:-60px;"></div>
+      <div class="deco-circle" style="width:200px;height:200px;background:var(--mama-lavender);bottom:-50px;left:-40px;animation-delay:3s;"></div>
+      <div class="deco-circle" style="width:120px;height:120px;background:var(--mama-peach);top:40%;left:10%;animation-delay:5s;"></div>
+
+      <div class="animate-fade-in w-full max-w-md relative z-10">
         <!-- Logo -->
         <div class="text-center mb-8">
-          <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-mama-pink to-mama-lavender shadow-soft mb-4">
-            <mat-icon class="text-white !text-4xl !w-9 !h-9">favorite</mat-icon>
+          <div class="auth-logo-ring">
+            <div class="auth-logo">
+              <mat-icon class="text-white !text-4xl !w-9 !h-9">favorite</mat-icon>
+            </div>
           </div>
-          <h1 class="text-3xl font-poppins font-bold text-mama-rose">Nestie AI</h1>
-          <p class="text-gray-500 font-poppins mt-1">Your smart pregnancy companion</p>
+          <h1 class="auth-brand">Nestie AI</h1>
+          <p class="auth-tagline">Your smart pregnancy companion</p>
         </div>
 
         <!-- Login Card -->
-        <mat-card class="!rounded-cute !shadow-card p-8">
-          <h2 class="text-xl font-poppins font-semibold text-center mb-6 text-gray-700">Welcome Back 💕</h2>
+        <div class="auth-card">
+          <h2 class="auth-title">Welcome Back 💕</h2>
 
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <mat-form-field appearance="outline" class="w-full mb-2">
               <mat-label>Email</mat-label>
-              <mat-icon matPrefix class="text-mama-pink mr-2">email</mat-icon>
+              <mat-icon matPrefix class="mr-2" style="color:var(--mama-pink-dark)">email</mat-icon>
               <input matInput formControlName="email" type="email" placeholder="your@email.com">
               <mat-error *ngIf="loginForm.get('email')?.hasError('required')">Email is required</mat-error>
               <mat-error *ngIf="loginForm.get('email')?.hasError('email')">Invalid email</mat-error>
@@ -45,7 +52,7 @@ import { AuthService } from '../../../core/services/auth.service';
 
             <mat-form-field appearance="outline" class="w-full mb-4">
               <mat-label>Password</mat-label>
-              <mat-icon matPrefix class="text-mama-lavender mr-2">lock</mat-icon>
+              <mat-icon matPrefix class="mr-2" style="color:var(--mama-lavender-dark)">lock</mat-icon>
               <input matInput formControlName="password" [type]="hidePassword ? 'password' : 'text'">
               <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" type="button">
                 <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -54,21 +61,111 @@ import { AuthService } from '../../../core/services/auth.service';
             </mat-form-field>
 
             <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid || loading"
-                    class="w-full !rounded-full !py-3 !text-lg font-poppins !bg-gradient-to-r !from-mama-pink-dark !to-mama-lavender-dark">
+                    class="auth-btn">
               {{ loading ? 'Signing in...' : 'Sign In ✨' }}
             </button>
           </form>
 
           <div class="text-center mt-6">
-            <p class="text-gray-500 font-poppins text-sm">
+            <p class="auth-switch">
               Don't have an account?
-              <a routerLink="/register" class="text-mama-rose font-semibold hover:underline">Sign Up</a>
+              <a routerLink="/register" class="auth-link">Sign Up</a>
             </p>
           </div>
-        </mat-card>
+        </div>
       </div>
     </div>
-  `
+  `,
+  styles: [`
+    .auth-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: linear-gradient(145deg, var(--mama-blush) 0%, var(--mama-pink-light) 40%, var(--mama-lavender-light) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .auth-logo-ring {
+      display: inline-block;
+      padding: 4px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--mama-rose), var(--mama-purple));
+      margin-bottom: 1rem;
+      box-shadow: 0 12px 40px rgba(212, 83, 126, 0.25);
+    }
+    .auth-logo {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--mama-rose), var(--mama-rose-deep));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .auth-brand {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--mama-berry);
+      letter-spacing: -0.03em;
+    }
+    .auth-tagline {
+      color: var(--mama-lavender-dark);
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-top: 0.25rem;
+    }
+    .auth-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 28px;
+      padding: 2.5rem;
+      box-shadow: 0 16px 48px rgba(200, 141, 184, 0.15);
+    }
+    .auth-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 1.75rem;
+      color: var(--mama-berry);
+    }
+    .auth-btn {
+      width: 100%;
+      border-radius: 999px !important;
+      padding: 0.8rem !important;
+      font-size: 1rem !important;
+      font-family: 'Poppins', sans-serif !important;
+      font-weight: 600 !important;
+      background: linear-gradient(135deg, var(--mama-rose), var(--mama-rose-deep)) !important;
+      color: white !important;
+      border: none !important;
+      box-shadow: 0 8px 24px rgba(212, 83, 126, 0.3) !important;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    }
+    .auth-btn:hover:not(:disabled) {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 12px 32px rgba(212, 83, 126, 0.4) !important;
+    }
+    .auth-switch {
+      color: var(--mama-lavender-dark);
+      font-size: 0.85rem;
+    }
+    .auth-link {
+      color: var(--mama-rose);
+      font-weight: 700;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .auth-link:hover {
+      color: var(--mama-rose-deep);
+      text-decoration: underline;
+    }
+  `]
 })
 export class LoginComponent {
   loginForm: FormGroup;

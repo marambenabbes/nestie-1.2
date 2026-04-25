@@ -97,7 +97,8 @@ Nestie-ai/
 |---------|-------------|
 | **Pregnancy Profile** | Track LMP, due date, trimester, blood type, weight |
 | **Appointments** | Book/manage appointments (checkup, ultrasound, lab work) |
-| **Symptoms Tracker** | Log symptoms with AI anomaly detection |
+| **Symptoms Tracker** | Log symptom
+s with AI anomaly detection |
 | **Nutrition Planner** | Personalized meal plans by trimester |
 | **Medication Manager** | Track prescriptions with reminders |
 | **Baby Growth** | Growth measurements vs WHO standards |

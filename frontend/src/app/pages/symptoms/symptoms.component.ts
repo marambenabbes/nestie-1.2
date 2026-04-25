@@ -29,17 +29,17 @@ import { StatsDashboardComponent } from './components/stats-dashboard.component'
     StatsDashboardComponent
   ],
   template: `
-    <div class="space-y-6 animate-fade-in">
-      <div class="rounded-3xl p-6 bg-gradient-to-r from-rose-100 via-pink-100 to-fuchsia-100 border border-pink-100/60 shadow-sm">
+    <div class="space-y-8 animate-fade-in">
+      <div class="rounded-3xl p-6" style="background:rgba(255,255,255,0.65);backdrop-filter:blur(20px);border:1px solid rgba(232,196,216,0.2);box-shadow:0 12px 40px rgba(200,141,184,0.12)">
         <div class="flex flex-wrap items-center justify-between gap-4">
           <div>
-            <h1 class="text-2xl font-poppins font-bold text-rose-500">Symptoms Calendar & Insights</h1>
-            <p class="text-sm text-rose-300 mt-1">Track your day, discover trends, and manage symptoms from one view.</p>
+            <h1 class="text-2xl font-bold" style="font-family:'Outfit',sans-serif;color:var(--mama-berry)">Symptoms Calendar & Insights</h1>
+            <p class="text-sm mt-1" style="color:var(--mama-lavender-dark)">Track your day, discover trends, and manage symptoms from one view.</p>
           </div>
           <button
             mat-raised-button
             (click)="openToday()"
-            class="!rounded-full !bg-gradient-to-r !from-rose-400 !to-fuchsia-400 !text-white hover:scale-[1.02] transition"
+            class="!rounded-full !text-white hover:scale-[1.02] transition" style="background:linear-gradient(135deg,var(--mama-rose),var(--mama-rose-deep))!important;box-shadow:0 6px 20px rgba(212,83,126,0.25)"
           >
             <mat-icon>add</mat-icon>
             Log Today

@@ -47,7 +47,7 @@ import { EducationModule, PregnancyProfile } from '../../core/models/models';
             <span class="inline-flex items-center rounded-full bg-fuchsia-50 px-2.5 py-1 text-xs font-semibold tracking-wide text-fuchsia-600 uppercase border border-fuchsia-100/50 transition-colors duration-300">
               Learning Center
             </span>
-            <h1 class="text-3xl font-extrabold tracking-tight text-gray-900">Good {{ timeOfDay }}, {{ firstName }}</h1>
+            <h1 class="text-3xl font-extrabold tracking-tight" style="font-family:'Outfit',sans-serif;color:var(--mama-berry)">Good {{ timeOfDay }}, {{ firstName }}</h1>
             <p class="text-sm font-medium text-gray-500">
               <span *ngIf="currentWeek() > 0">Week {{ currentWeek() }} • {{ trimesterLabel }}</span>
               <span *ngIf="currentWeek() === 0">Your learning journey begins</span>
@@ -163,7 +163,7 @@ import { EducationModule, PregnancyProfile } from '../../core/models/models';
       <div>
         <div class="mb-6 flex flex-wrap items-end justify-between gap-4">
           <div class="transition-transform duration-300 hover:translate-x-1">
-            <h2 class="text-2xl font-bold tracking-tight text-gray-900">Learn from Experts</h2>
+            <h2 class="text-2xl font-bold tracking-tight" style="font-family:'Outfit',sans-serif;color:var(--mama-berry)">Learn from Experts</h2>
             <p class="text-sm font-medium text-pink-500 mt-1">Curated lessons for your current stage</p>
           </div>
           <div class="flex items-center gap-2 rounded-full border border-pink-100 bg-white p-1 shadow-sm overflow-x-auto transition-shadow duration-300 hover:shadow-md hover:border-pink-200">

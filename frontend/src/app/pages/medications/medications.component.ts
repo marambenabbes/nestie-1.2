@@ -29,21 +29,21 @@ import { Medication } from '../../core/models/models';
     MatProgressSpinnerModule, MatChipsModule, MatTooltipModule
   ],
   template: `
-    <div class="space-y-6 animate-fade-in">
+    <div class="space-y-8 animate-fade-in">
       <!-- Header -->
       <div class="flex items-center justify-between">
-        <h1 class="text-2xl font-poppins font-bold text-gray-800">Medication Manager 💊</h1>
-        <button mat-raised-button class="!rounded-full !bg-gradient-to-r !from-mama-pink-dark !to-mama-lavender-dark !text-white"
-                (click)="showForm = !showForm">
+        <h1 class="text-2xl font-bold" style="font-family:'Outfit',sans-serif;color:var(--mama-berry)">Medication Manager 💊</h1>
+        <button mat-raised-button class="!rounded-full !text-white" (click)="showForm = !showForm"
+                style="background:linear-gradient(135deg,var(--mama-rose),var(--mama-rose-deep))!important;box-shadow:0 6px 20px rgba(212,83,126,0.25)">
           <mat-icon>{{ showForm ? 'close' : 'add' }}</mat-icon>
           {{ showForm ? 'Cancel' : 'Add Medication' }}
         </button>
       </div>
 
       <!-- Add Medication Form -->
-      <mat-card *ngIf="showForm" class="!rounded-cute !shadow-card p-6 animate-fade-in">
+      <mat-card *ngIf="showForm" class="!rounded-cute !shadow-card p-6 animate-fade-in" style="background:rgba(255,255,255,0.7);backdrop-filter:blur(20px);border:1px solid rgba(232,196,216,0.2)">
         <h3 class="text-lg font-poppins font-semibold text-mama-rose mb-4 flex items-center gap-2">
-          <mat-icon class="text-mama-rose">{{ editingId ? 'edit' : 'medication' }}</mat-icon>
+          <mat-icon style="color:var(--mama-rose)">{{ editingId ? 'edit' : 'medication' }}</mat-icon>
           {{ editingId ? 'Edit Medication' : 'New Medication' }}
         </h3>
         <form [formGroup]="medForm" (ngSubmit)="onSubmit()" class="space-y-4">
@@ -114,8 +114,8 @@ import { Medication } from '../../core/models/models';
           <div class="flex justify-end gap-3">
             <button mat-button type="button" class="!rounded-full" (click)="resetForm()">Cancel</button>
             <button mat-raised-button type="submit"
-                    class="!rounded-full !bg-gradient-to-r !from-mama-pink-dark !to-mama-lavender-dark !text-white"
-                    [disabled]="medForm.invalid || saving">
+                    class="!rounded-full !text-white" [disabled]="medForm.invalid || saving"
+                    style="background:linear-gradient(135deg,var(--mama-rose),var(--mama-rose-deep))!important;box-shadow:0 6px 20px rgba(212,83,126,0.25)">
               {{ saving ? 'Saving...' : (editingId ? 'Update Medication ✏️' : 'Add Medication 💊') }}
             </button>
           </div>
@@ -149,7 +149,7 @@ import { Medication } from '../../core/models/models';
       </div>
 
       <!-- Empty State -->
-      <mat-card *ngIf="!loading && filteredMedications.length === 0" class="!rounded-cute !shadow-card p-8 text-center">
+      <mat-card *ngIf="!loading && filteredMedications.length === 0" class="!rounded-cute !shadow-card p-8 text-center" style="background:rgba(255,255,255,0.7);backdrop-filter:blur(20px)">
         <mat-icon class="!text-6xl text-mama-lavender-light mb-3">medication</mat-icon>
         <p class="text-gray-500 font-medium">{{ filter === 'all' ? 'No medications added yet' : 'No ' + filter + ' medications' }}</p>
         <p class="text-sm text-gray-400 mt-1" *ngIf="filter === 'all'">Click "Add Medication" to track your prescriptions and supplements</p>
@@ -157,7 +157,8 @@ import { Medication } from '../../core/models/models';
 
       <!-- Medication Cards -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4" *ngIf="!loading">
-        <mat-card *ngFor="let med of filteredMedications" class="!rounded-cute !shadow-card p-5 hover:!shadow-hover transition-all"
+        <mat-card *ngFor="let med of filteredMedications" class="!rounded-cute p-5 transition-all duration-300 hover:-translate-y-1"
+                  style="background:rgba(255,255,255,0.7);backdrop-filter:blur(16px);border:1px solid rgba(232,196,216,0.15);box-shadow:0 8px 32px rgba(200,141,184,0.12)"
                   [class.!border-l-4]="true" [class.!border-mama-pink]="med.active" [class.!border-gray-300]="!med.active"
                   [class.opacity-60]="!med.active">
           <div class="flex items-start justify-between">

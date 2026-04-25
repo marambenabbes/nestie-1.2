@@ -23,75 +23,248 @@ import { ChatbotComponent } from '../../shared/chatbot/chatbot.component';
   template: `
     <div class="flex h-screen font-poppins">
       <!-- Sidebar -->
-      <aside class="w-64 bg-white shadow-card flex flex-col border-r border-mama-pink-light">
+      <aside class="sidebar-glass">
         <!-- Logo -->
-        <div class="p-6 text-center border-b border-mama-pink-light">
-          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-mama-pink to-mama-lavender mb-2">
+        <div class="sidebar-logo">
+          <div class="logo-icon">
             <mat-icon class="text-white">favorite</mat-icon>
           </div>
-          <h1 class="text-xl font-bold text-mama-rose">Nestie AI</h1>
+          <h1 class="logo-text">GlowMama</h1>
+          <p class="logo-sub">pregnancy companion</p>
         </div>
 
         <!-- Navigation -->
-        <nav class="flex-1 overflow-y-auto py-4">
-          <a *ngFor="let item of navItems" [routerLink]="item.route" routerLinkActive="bg-mama-pink-light text-mama-rose"
-             class="flex items-center px-6 py-3 text-gray-600 hover:bg-mama-pink-light hover:text-mama-rose transition-all duration-200 mx-2 rounded-xl mb-1">
-            <mat-icon class="mr-3 !text-xl">{{ item.icon }}</mat-icon>
-            <span class="text-sm font-medium">{{ item.label }}</span>
+        <nav class="sidebar-nav">
+          <a *ngFor="let item of navItems" [routerLink]="item.route" routerLinkActive="nav-active"
+             class="nav-item">
+            <mat-icon class="nav-icon">{{ item.icon }}</mat-icon>
+            <span class="nav-label">{{ item.label }}</span>
           </a>
 
           <!-- Doctor nav items -->
-          <div *ngIf="authService.hasRole(['DOCTOR', 'ADMIN'])" class="mt-4 pt-4 border-t border-mama-lavender-light mx-4">
-            <p class="px-2 text-xs font-semibold text-mama-lavender-dark uppercase tracking-wider mb-2">Doctor</p>
-            <a routerLink="doctor" routerLinkActive="bg-mama-lavender-light text-mama-purple"
-               class="flex items-center px-6 py-3 text-gray-600 hover:bg-mama-lavender-light hover:text-mama-purple transition-all duration-200 mx-2 rounded-xl">
-              <mat-icon class="mr-3">medical_services</mat-icon>
-              <span class="text-sm font-medium">Doctor Panel</span>
+          <div *ngIf="authService.hasRole(['DOCTOR', 'ADMIN'])" class="nav-section">
+            <p class="nav-section-label">Doctor</p>
+            <a routerLink="doctor" routerLinkActive="nav-active"
+               class="nav-item">
+              <mat-icon class="nav-icon">medical_services</mat-icon>
+              <span class="nav-label">Doctor Panel</span>
             </a>
-            <a routerLink="doctor/education" routerLinkActive="bg-mama-lavender-light text-mama-purple"
-               class="mt-1 flex items-center px-6 py-3 text-gray-600 hover:bg-mama-lavender-light hover:text-mama-purple transition-all duration-200 mx-2 rounded-xl">
-              <mat-icon class="mr-3">school</mat-icon>
-              <span class="text-sm font-medium">Lesson Studio</span>
+            <a routerLink="doctor/education" routerLinkActive="nav-active"
+               class="nav-item">
+              <mat-icon class="nav-icon">school</mat-icon>
+              <span class="nav-label">Lesson Studio</span>
             </a>
           </div>
 
           <!-- Admin nav items -->
-          <div *ngIf="authService.hasRole(['ADMIN'])" class="mt-2">
-            <p class="px-6 text-xs font-semibold text-mama-peach-dark uppercase tracking-wider mb-2">Admin</p>
-            <a routerLink="admin" routerLinkActive="bg-mama-peach-light text-orange-600"
-               class="flex items-center px-6 py-3 text-gray-600 hover:bg-mama-peach-light hover:text-orange-600 transition-all duration-200 mx-2 rounded-xl">
-              <mat-icon class="mr-3">admin_panel_settings</mat-icon>
-              <span class="text-sm font-medium">Admin Panel</span>
+          <div *ngIf="authService.hasRole(['ADMIN'])" class="nav-section">
+            <p class="nav-section-label">Admin</p>
+            <a routerLink="admin" routerLinkActive="nav-active"
+               class="nav-item">
+              <mat-icon class="nav-icon">admin_panel_settings</mat-icon>
+              <span class="nav-label">Admin Panel</span>
             </a>
           </div>
         </nav>
 
         <!-- User info -->
-        <div class="p-4 border-t border-mama-pink-light">
-          <div class="flex items-center">
-            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-mama-pink to-mama-lavender flex items-center justify-center">
-              <span class="text-white font-semibold text-sm">{{ userInitials }}</span>
-            </div>
-            <div class="ml-3 flex-1">
-              <p class="text-sm font-semibold text-gray-700">{{ authService.user()?.fullName }}</p>
-              <p class="text-xs text-gray-400">{{ authService.user()?.role }}</p>
-            </div>
-            <button mat-icon-button (click)="authService.logout()" matTooltip="Logout">
-              <mat-icon class="text-gray-400">logout</mat-icon>
-            </button>
+        <div class="sidebar-user">
+          <div class="user-avatar">
+            <span>{{ userInitials }}</span>
           </div>
+          <div class="user-info">
+            <p class="user-name">{{ authService.user()?.fullName }}</p>
+            <p class="user-role">{{ authService.user()?.role }}</p>
+          </div>
+          <button mat-icon-button (click)="authService.logout()" matTooltip="Logout" class="logout-btn">
+            <mat-icon>logout</mat-icon>
+          </button>
         </div>
       </aside>
 
       <!-- Main content -->
-      <main class="flex-1 overflow-y-auto bg-gradient-to-br from-mama-cream to-mama-pink-light p-6">
+      <main class="flex-1 overflow-y-auto main-content">
         <router-outlet></router-outlet>
       </main>
 
       <!-- AI Chatbot -->
       <app-chatbot></app-chatbot>
     </div>
-  `
+  `,
+  styles: [`
+    /* ─── SIDEBAR GLASS ─── */
+    .sidebar-glass {
+      width: 260px;
+      display: flex;
+      flex-direction: column;
+      background: rgba(255, 250, 252, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-right: 1px solid rgba(232, 196, 216, 0.2);
+      box-shadow: 4px 0 24px rgba(200, 141, 184, 0.06);
+    }
+
+    /* ─── LOGO ─── */
+    .sidebar-logo {
+      padding: 1.75rem 1.5rem 1.5rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(232, 196, 216, 0.15);
+    }
+    .logo-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #D4537E, #A85B8F);
+      box-shadow: 0 6px 20px rgba(212, 83, 126, 0.25);
+      margin-bottom: 0.5rem;
+    }
+    .logo-icon mat-icon {
+      font-size: 24px;
+      width: 24px;
+      height: 24px;
+    }
+    .logo-text {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #72243E;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+    .logo-sub {
+      font-size: 0.65rem;
+      color: #C98DB8;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 500;
+      margin: 0.15rem 0 0;
+    }
+
+    /* ─── NAVIGATION ─── */
+    .sidebar-nav {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem 0.75rem;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      padding: 0.7rem 1rem;
+      margin-bottom: 0.2rem;
+      border-radius: 14px;
+      color: #8B7B8E;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      border: 1px solid transparent;
+    }
+    .nav-item:hover {
+      background: rgba(244, 192, 209, 0.12);
+      color: #993556;
+      transform: translateX(4px);
+    }
+    .nav-item.nav-active {
+      background: linear-gradient(135deg, rgba(244, 192, 209, 0.25), rgba(232, 196, 216, 0.15));
+      color: #993556;
+      font-weight: 600;
+      border-left: 3px solid #D4537E;
+      box-shadow: 0 2px 12px rgba(212, 83, 126, 0.08);
+    }
+
+    .nav-icon {
+      margin-right: 0.75rem;
+      font-size: 20px !important;
+      width: 20px !important;
+      height: 20px !important;
+      opacity: 0.8;
+    }
+    .nav-active .nav-icon {
+      opacity: 1;
+      color: #D4537E;
+    }
+
+    .nav-label {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .nav-section {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(232, 196, 216, 0.15);
+    }
+    .nav-section-label {
+      padding: 0 0.5rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #C98DB8;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ─── USER SECTION ─── */
+    .sidebar-user {
+      padding: 1rem 1.25rem;
+      border-top: 1px solid rgba(232, 196, 216, 0.15);
+      display: flex;
+      align-items: center;
+    }
+    .user-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #D4537E, #A85B8F);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(212, 83, 126, 0.2);
+    }
+    .user-avatar span {
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .user-info {
+      margin-left: 0.75rem;
+      flex: 1;
+      min-width: 0;
+    }
+    .user-name {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #4a4a4a;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .user-role {
+      font-size: 0.65rem;
+      color: #C98DB8;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .logout-btn {
+      color: #C98DB8 !important;
+      transition: color 0.2s ease !important;
+    }
+    .logout-btn:hover {
+      color: #993556 !important;
+    }
+
+    /* ─── MAIN CONTENT ─── */
+    .main-content {
+      background: linear-gradient(145deg, #FFF5F7 0%, #fce4ec 40%, #F9EEF4 100%);
+      padding: 2rem;
+    }
+  `]
 })
 export class LayoutComponent {
   private allNavItems = [

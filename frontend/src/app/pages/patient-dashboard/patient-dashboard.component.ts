@@ -16,128 +16,351 @@ import { PregnancyTimelineComponent } from '../../shared/pregnancy-timeline/preg
   standalone: true,
   imports: [CommonModule, MatCardModule, MatIconModule, MatButtonModule, RouterLink, PregnancyTimelineComponent],
   template: `
-    <div class="space-y-6 animate-fade-in">
-      <!-- Welcome Header -->
-      <div class="flex items-center justify-between">
-        <div>
-          <h1 class="text-2xl font-poppins font-bold text-gray-800">
-            Hello, {{ (authService.user()?.fullName || '').split(' ')[0] }} 💕
-          </h1>
-          <p class="text-gray-500 font-poppins">Here's your pregnancy overview</p>
-        </div>
-        <div class="text-right">
-          <p class="text-sm text-gray-400">{{ today | date:'EEE, MMM d, yyyy' }}</p>
-        </div>
-      </div>
+    <div class="space-y-8 animate-fade-in">
 
-      <!-- Stats Cards Row -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <!-- ══════ HERO BANNER ══════ -->
+<div class="hero-banner">
+
+  <!-- Full Background Video -->
+  <video class="hero-bg-video" autoplay muted loop playsinline
+         src="app/assets/pregnancy/Whisk_czmwmjnhrtmxctnj1soygdotytzjrtl5ymn10yn.mp4">
+  </video>
+
+  <!-- Overlay so text is readable -->
+  <div class="hero-overlay"></div>
+
+  <!-- Text on top -->
+  <div class="hero-content">
+    <div class="hero-text">
+      <p class="hero-greeting">Good {{ timeOfDay }},</p>
+      <h1 class="hero-name">{{ firstName }} 💕</h1>
+      <p class="hero-subtitle">{{ getProgressMessage() }}</p>
+      <div class="hero-date">
+        <mat-icon class="!text-sm">calendar_today</mat-icon>
+        {{ today | date:'EEEE, MMMM d, yyyy' }}
+      </div>
+    </div>
+  </div>
+
+</div>
+      <!-- ══════ STATS CARDS ══════ -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         <!-- Pregnancy Week Card -->
-        <mat-card class="!rounded-cute !shadow-card !bg-gradient-to-br !from-mama-pink-light !to-white p-5">
+        <div class="glass-card stat-card p-5">
           <div class="flex items-center justify-between">
             <div>
-              <p class="text-sm text-gray-500 font-poppins">Current Week</p>
-              <p class="text-3xl font-bold text-mama-rose mt-1">{{ calculatedWeek }}<span class="text-lg font-normal text-mama-rose/60">+{{ calculatedDay }}d</span></p>
-              <p class="text-xs text-gray-400 mt-1">Trimester {{ calculatedTrimester }}</p>
+              <p class="stat-label">Current Week</p>
+              <p class="stat-value text-[var(--mama-rose)]">{{ calculatedWeek }}<span class="stat-sub">+{{ calculatedDay }}d</span></p>
+              <p class="stat-hint">Trimester {{ calculatedTrimester }}</p>
             </div>
-            <div class="w-14 h-14 rounded-full bg-mama-pink/20 flex items-center justify-center">
-              <mat-icon class="text-mama-rose !text-3xl !w-8 !h-8">pregnant_woman</mat-icon>
+            <div class="stat-icon-wrap" style="background:linear-gradient(135deg,var(--mama-pink),var(--mama-rose));">
+              <mat-icon class="text-white !text-2xl">pregnant_woman</mat-icon>
             </div>
           </div>
-        </mat-card>
+        </div>
 
         <!-- Days to Due Date -->
-        <mat-card class="!rounded-cute !shadow-card !bg-gradient-to-br !from-mama-lavender-light !to-white p-5">
+        <div class="glass-card stat-card p-5">
           <div class="flex items-center justify-between">
             <div>
-              <p class="text-sm text-gray-500 font-poppins">Days Until Due</p>
-              <p class="text-3xl font-bold text-mama-purple mt-1">{{ daysUntilDue }}</p>
-              <p class="text-xs text-gray-400 mt-1">{{ pregnancy?.expectedDueDate | date:'MMM d' }}</p>
+              <p class="stat-label">Days Until Due</p>
+              <p class="stat-value text-[var(--mama-purple)]">{{ daysUntilDue }}</p>
+              <p class="stat-hint">{{ pregnancy?.expectedDueDate | date:'MMM d' }}</p>
             </div>
-            <div class="w-14 h-14 rounded-full bg-mama-lavender/20 flex items-center justify-center">
-              <mat-icon class="text-mama-purple !text-3xl !w-8 !h-8">event</mat-icon>
+            <div class="stat-icon-wrap" style="background:linear-gradient(135deg,var(--mama-lavender),var(--mama-purple));">
+              <mat-icon class="text-white !text-2xl">event</mat-icon>
             </div>
           </div>
-        </mat-card>
+        </div>
 
         <!-- Upcoming Appointments -->
-        <mat-card class="!rounded-cute !shadow-card !bg-gradient-to-br !from-mama-peach-light !to-white p-5">
+        <div class="glass-card stat-card p-5">
           <div class="flex items-center justify-between">
             <div>
-              <p class="text-sm text-gray-500 font-poppins">Next Appointment</p>
-              <p class="text-lg font-bold text-orange-600 mt-1">{{ nextAppointment?.appointmentDate | date:'MMM d' }}</p>
-              <p class="text-xs text-gray-400 mt-1">{{ nextAppointment?.type || 'None scheduled' }}</p>
+              <p class="stat-label">Next Appointment</p>
+              <p class="stat-value text-[var(--mama-rose-deep)]">{{ nextAppointment?.appointmentDate | date:'MMM d' }}</p>
+              <p class="stat-hint">{{ nextAppointment?.type || 'None scheduled' }}</p>
             </div>
-            <div class="w-14 h-14 rounded-full bg-mama-peach/20 flex items-center justify-center">
-              <mat-icon class="text-orange-500 !text-3xl !w-8 !h-8">calendar_today</mat-icon>
+            <div class="stat-icon-wrap" style="background:linear-gradient(135deg,var(--mama-peach),var(--mama-pink-dark));">
+              <mat-icon class="text-white !text-2xl">calendar_today</mat-icon>
             </div>
           </div>
-        </mat-card>
+        </div>
 
         <!-- Active Medications -->
-        <mat-card class="!rounded-cute !shadow-card !bg-gradient-to-br !from-green-50 !to-white p-5">
+        <div class="glass-card stat-card p-5">
           <div class="flex items-center justify-between">
             <div>
-              <p class="text-sm text-gray-500 font-poppins">Active Meds</p>
-              <p class="text-3xl font-bold text-green-600 mt-1">{{ activeMeds.length }}</p>
-              <p class="text-xs text-gray-400 mt-1">medications</p>
+              <p class="stat-label">Active Meds</p>
+              <p class="stat-value text-[var(--mama-lavender-dark)]">{{ activeMeds.length }}</p>
+              <p class="stat-hint">medications</p>
             </div>
-            <div class="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center">
-              <mat-icon class="text-green-600 !text-3xl !w-8 !h-8">medication</mat-icon>
+            <div class="stat-icon-wrap" style="background:linear-gradient(135deg,var(--mama-lavender-dark),var(--mama-purple));">
+              <mat-icon class="text-white !text-2xl">medication</mat-icon>
             </div>
           </div>
-        </mat-card>
+        </div>
       </div>
 
-      <!-- Pregnancy Progress Ring -->
+      <!-- ══════ 3D PROGRESS SPHERE + TIMELINE ══════ -->
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <mat-card class="!rounded-cute !shadow-card p-6 lg:col-span-1">
-          <h3 class="font-poppins font-semibold text-gray-700 mb-4">Your Baby's Growth 🌸</h3>
+        <div class="glass-card p-6 lg:col-span-1">
+          <h3 class="section-title mb-5">Your Baby's Growth 🌸</h3>
+
+          <!-- 3D Progress Sphere -->
+          <div class="progress-sphere-container mb-6">
+            <div class="progress-sphere">
+              <div class="sphere-ring"></div>
+              <div class="sphere-ring"></div>
+              <div class="sphere-ring"></div>
+              <div class="sphere-fill" [style.--progress]="progressPercent + '%'"></div>
+              <div class="sphere-inner">
+                <span class="text-2xl font-bold" style="color:var(--mama-rose);font-family:'Outfit',sans-serif;">{{ calculatedWeek }}</span>
+                <span class="text-[10px] font-semibold uppercase tracking-wider" style="color:var(--mama-lavender-dark);">weeks</span>
+              </div>
+            </div>
+          </div>
+
           <app-pregnancy-timeline [currentWeek]="calculatedWeek"></app-pregnancy-timeline>
-        </mat-card>
+        </div>
 
         <!-- Recent Symptoms -->
-        <mat-card class="!rounded-cute !shadow-card p-6 lg:col-span-2">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="font-poppins font-semibold text-gray-700">Recent Symptoms 📋</h3>
-            <a routerLink="/dashboard/symptoms" class="text-mama-rose text-sm hover:underline">View all</a>
+        <div class="glass-card p-6 lg:col-span-2">
+          <div class="flex items-center justify-between mb-5">
+            <h3 class="section-title">Recent Symptoms 📋</h3>
+            <a routerLink="/dashboard/symptoms" class="view-all-link">View all →</a>
           </div>
           <div class="space-y-3" *ngIf="recentSymptoms.length > 0; else noSymptoms">
-            <div *ngFor="let symptom of recentSymptoms" class="flex items-center p-3 rounded-xl"
+            <div *ngFor="let symptom of recentSymptoms" class="symptom-row"
                  [class]="getSeverityBg(symptom.severity)">
-              <div class="w-10 h-10 rounded-full flex items-center justify-center mr-3"
-                   [class]="getSeverityDot(symptom.severity)">
+              <div class="symptom-dot" [class]="getSeverityDot(symptom.severity)">
                 <mat-icon class="!text-lg text-white">{{ symptom.flaggedByAI ? 'warning' : 'monitor_heart' }}</mat-icon>
               </div>
               <div class="flex-1">
                 <p class="font-medium text-gray-700 text-sm">{{ symptom.symptomName }}</p>
                 <p class="text-xs text-gray-400">{{ symptom.occurredAt | date:'short' }} · Week {{ symptom.pregnancyWeek }}</p>
               </div>
-              <span class="text-xs font-medium px-2 py-1 rounded-full" [class]="getSeverityBadge(symptom.severity)">
+              <span class="severity-badge" [class]="getSeverityBadge(symptom.severity)">
                 {{ symptom.severity }}
               </span>
             </div>
           </div>
           <ng-template #noSymptoms>
-            <p class="text-gray-400 text-center py-8">No symptoms logged yet 😊</p>
+            <div class="empty-state">
+              <mat-icon class="!text-5xl" style="color:var(--mama-pink);">sentiment_satisfied</mat-icon>
+              <p>No symptoms logged yet 😊</p>
+            </div>
           </ng-template>
-        </mat-card>
+        </div>
       </div>
 
-      
-      <!-- Quick Actions -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <!-- ══════ QUICK ACTIONS ══════ -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
         <a *ngFor="let action of quickActions" [routerLink]="action.route"
-           class="mama-card flex flex-col items-center py-6 cursor-pointer text-center hover:shadow-hover">
-          <div class="w-12 h-12 rounded-full flex items-center justify-center mb-3" [style.background]="action.bg">
-            <mat-icon [style.color]="action.color">{{ action.icon }}</mat-icon>
+           class="glass-card action-card">
+          <div class="action-icon" [style.background]="action.gradient">
+            <mat-icon class="text-white">{{ action.icon }}</mat-icon>
           </div>
-          <span class="text-sm font-medium text-gray-600">{{ action.label }}</span>
+          <span class="action-label">{{ action.label }}</span>
         </a>
       </div>
 
     </div>
-  `
+  `,
+  styles: [`
+    /* ─── HERO BANNER ─── */
+    .hero-banner {
+      position: relative;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(255,245,247,0.9) 0%, rgba(252,228,236,0.7) 50%, rgba(249,238,244,0.8) 100%);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(232, 196, 216, 0.2);
+      padding: 2.5rem;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(200, 141, 184, 0.12);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .hero-text { flex: 1; }
+    .hero-greeting {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.85rem;
+      color: var(--mama-lavender-dark);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .hero-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--mama-berry);
+      letter-spacing: -0.02em;
+      margin: 0.25rem 0 0.5rem;
+    }
+    .hero-subtitle {
+      font-size: 0.9rem;
+      color: #72243E;
+      opacity: 0.7;
+      font-weight: 500;
+      max-width: 360px;
+    }
+    .hero-date {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1rem;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.6);
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--mama-lavender-dark);
+      border: 1px solid rgba(232, 196, 216, 0.2);
+    }
+    .hero-character {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .hero-content { flex-direction: column; text-align: center; }
+      .hero-character { order: -1; }
+      .hero-name { font-size: 1.6rem; }
+      .hero-subtitle { margin: 0 auto; }
+      .hero-video-container { width: 150px !important; height: 150px !important; }
+    }
+
+    /* ─── STAT CARDS ─── */
+    .stat-card { cursor: default; }
+    .stat-label {
+      font-size: 0.78rem;
+      color: #8B7B8E;
+      font-weight: 500;
+      font-family: 'Poppins', sans-serif;
+    }
+    .stat-value {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-top: 0.25rem;
+    }
+    .stat-sub {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: 0.5;
+    }
+    .stat-hint {
+      font-size: 0.7rem;
+      color: #C98DB8;
+      margin-top: 0.15rem;
+    }
+    .stat-icon-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(212, 83, 126, 0.2);
+      flex-shrink: 0;
+    }
+
+    /* ─── SECTION TITLE ─── */
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      color: var(--mama-berry);
+      font-size: 1.05rem;
+    }
+
+    /* ─── VIEW ALL LINK ─── */
+    .view-all-link {
+      color: var(--mama-rose);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .view-all-link:hover {
+      color: var(--mama-rose-deep);
+    }
+
+    /* ─── SYMPTOM ROW ─── */
+    .symptom-row {
+      display: flex;
+      align-items: center;
+      padding: 0.85rem 1rem;
+      border-radius: 16px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .symptom-row:hover {
+      transform: translateX(4px);
+      box-shadow: 0 4px 16px rgba(200, 141, 184, 0.1);
+    }
+    .symptom-dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 0.85rem;
+      flex-shrink: 0;
+    }
+    .severity-badge {
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+    }
+
+    /* ─── EMPTY STATE ─── */
+    .empty-state {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: #C98DB8;
+      font-size: 0.9rem;
+    }
+
+    /* ─── ACTION CARDS ─── */
+    .action-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.75rem 1rem;
+      text-decoration: none;
+      cursor: pointer;
+      text-align: center;
+    }
+    .action-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.85rem;
+      box-shadow: 0 6px 20px rgba(212, 83, 126, 0.15);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .action-card:hover .action-icon {
+      transform: scale(1.12) translateY(-3px);
+    }
+    .action-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--mama-berry);
+    }
+  `]
 })
 export class PatientDashboardComponent implements OnInit {
   today = new Date();
@@ -154,11 +377,14 @@ export class PatientDashboardComponent implements OnInit {
   calculatedDay = 0;
   calculatedTrimester = 1;
 
+  firstName = '';
+  timeOfDay = 'morning';
+
   quickActions = [
-    { route: '/dashboard/symptoms', icon: 'add_circle', label: 'Log Symptom', bg: '#fce4ec', color: '#e91e63' },
-    { route: '/dashboard/appointments', icon: 'schedule', label: 'Book Visit', bg: '#f3e5f5', color: '#9c27b0' },
-    { route: '/dashboard/nutrition', icon: 'restaurant_menu', label: 'Meal Plan', bg: '#fbe9e7', color: '#ff5722' },
-    { route: '/dashboard/growth', icon: 'trending_up', label: 'Growth Chart', bg: '#e8f5e9', color: '#4caf50' },
+    { route: '/dashboard/symptoms', icon: 'add_circle', label: 'Log Symptom', gradient: 'linear-gradient(135deg, #D4537E, #993556)' },
+    { route: '/dashboard/appointments', icon: 'schedule', label: 'Book Visit', gradient: 'linear-gradient(135deg, #C98DB8, #A85B8F)' },
+    { route: '/dashboard/nutrition', icon: 'restaurant_menu', label: 'Meal Plan', gradient: 'linear-gradient(135deg, #F9D4C8, #ED93B1)' },
+    { route: '/dashboard/growth', icon: 'trending_up', label: 'Growth Chart', gradient: 'linear-gradient(135deg, #E8C4D8, #C98DB8)' },
   ];
 
   constructor(
@@ -168,7 +394,14 @@ export class PatientDashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const userId = this.authService.user()?.id;
+    const user = this.authService.user();
+    this.firstName = user?.fullName?.split(' ')[0] || 'there';
+    const hour = new Date().getHours();
+    if (hour < 12) this.timeOfDay = 'morning';
+    else if (hour < 17) this.timeOfDay = 'afternoon';
+    else this.timeOfDay = 'evening';
+
+    const userId = user?.id;
     if (!userId) return;
 
     this.apiService.getPregnancyProfiles(userId).subscribe({
@@ -222,10 +455,10 @@ export class PatientDashboardComponent implements OnInit {
 
   getProgressMessage(): string {
     if (!this.pregnancy || this.pregnancy.status !== 'ACTIVE') return 'Start tracking your pregnancy';
-    const week = this.pregnancy.currentWeek || 0;
-    if (week <= 12) return 'First trimester — your baby is forming! 🌱 (Week ' + this.calculatedWeek + '+' + this.calculatedDay + 'd)';
-    if (week <= 27) return 'Second trimester — feeling those kicks! 💪 (Week ' + this.calculatedWeek + '+' + this.calculatedDay + 'd)';
-    if (week <= 36) return 'Third trimester — almost there, mama! 🎀 (Week ' + this.calculatedWeek + '+' + this.calculatedDay + 'd)';
+    const week = this.calculatedWeek;
+    if (week <= 12) return 'First trimester — your baby is forming! 🌱';
+    if (week <= 27) return 'Second trimester — feeling those kicks! 💪';
+    if (week <= 36) return 'Third trimester — almost there, mama! 🎀';
     return 'Final stretch — baby is coming soon! 🌟';
   }
 

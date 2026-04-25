@@ -51,11 +51,11 @@ import { BabyGrowth, PregnancyProfile } from '../../core/models/models';
       <!-- Header -->
       <div class="flex items-center justify-between">
         <div>
-          <h1 class="text-2xl font-bold text-gray-800">Baby Growth 👶</h1>
+          <h1 class="text-2xl font-bold" style="font-family:'Outfit',sans-serif;color:var(--mama-berry)">Baby Growth 👶</h1>
           <p class="text-sm text-gray-400 mt-0.5">Track and cherish every moment</p>
         </div>
         <button mat-raised-button (click)="toggleForm()"
-                class="!rounded-full !bg-gradient-to-r !from-pink-400 !to-purple-400 !text-white !px-5">
+                class="!rounded-full !text-white !px-5" style="background:linear-gradient(135deg,var(--mama-rose),var(--mama-rose-deep))!important;box-shadow:0 6px 20px rgba(212,83,126,0.25)">
           <mat-icon>{{ showForm ? 'close' : 'add' }}</mat-icon> {{ showForm ? 'Cancel' : 'Record' }}
         </button>
       </div>
@@ -68,10 +68,10 @@ import { BabyGrowth, PregnancyProfile } from '../../core/models/models';
       </div>
 
       <!-- Hero Week Card -->
-      <div *ngIf="activeProfile" class="rounded-3xl bg-gradient-to-r from-rose-100 via-pink-100 to-fuchsia-100 border border-pink-100/50 p-6 shadow-sm">
+      <div *ngIf="activeProfile" class="rounded-3xl p-6" style="background:rgba(255,255,255,0.65);backdrop-filter:blur(20px);border:1px solid rgba(232,196,216,0.2);box-shadow:0 12px 40px rgba(200,141,184,0.12)">
         <div class="flex flex-wrap items-center gap-6">
           <div class="relative">
-            <div class="w-24 h-24 rounded-full bg-gradient-to-br from-pink-300 to-purple-300 flex items-center justify-center shadow-lg">
+            <div class="w-24 h-24 rounded-full flex items-center justify-center shadow-lg" style="background:linear-gradient(135deg,var(--mama-rose),var(--mama-purple))">
               <span class="text-4xl font-bold text-white">{{ activeProfile.currentWeek }}</span>
             </div>
             <span class="absolute -bottom-1 -right-1 text-xs font-bold bg-white text-pink-500 px-2 py-0.5 rounded-full shadow">WEEK</span>
@@ -296,7 +296,7 @@ import { BabyGrowth, PregnancyProfile } from '../../core/models/models';
 
         <!-- Save Button -->
         <button mat-raised-button (click)="onSubmit()" [disabled]="saving"
-                class="!w-full !rounded-full !bg-gradient-to-r !from-pink-400 !to-purple-400 !text-white !py-4 !text-base !font-bold shadow-lg hover:shadow-xl transition-all">
+                class="!w-full !rounded-full !text-white !py-4 !text-base !font-bold shadow-lg hover:shadow-xl transition-all" style="background:linear-gradient(135deg,var(--mama-rose),var(--mama-rose-deep))!important;box-shadow:0 8px 28px rgba(212,83,126,0.3)">
           <mat-icon class="!text-xl">{{ saving ? 'hourglass_empty' : 'save' }}</mat-icon>
           {{ saving ? 'Saving...' : '💾 Save Growth Record' }}
         </button>
@@ -310,12 +310,12 @@ import { BabyGrowth, PregnancyProfile } from '../../core/models/models';
       <!-- Growth Records Grid -->
       <div *ngIf="!loading && growthRecords.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <mat-card *ngFor="let record of growthRecords; let i = index"
-                  class="!rounded-3xl !shadow-md !bg-white border border-gray-100 hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+                  class="!rounded-3xl hover:-translate-y-1 transition-all duration-300" style="background:rgba(255,255,255,0.7);backdrop-filter:blur(16px);border:1px solid rgba(232,196,216,0.15);box-shadow:0 8px 32px rgba(200,141,184,0.12)">
           <!-- Week Header -->
-          <div class="p-4 bg-gradient-to-r from-pink-50 to-purple-50 rounded-t-3xl border-b border-pink-100/50">
+          <div class="p-4 rounded-t-3xl" style="background:linear-gradient(135deg,var(--mama-blush),var(--mama-lavender-light));border-bottom:1px solid rgba(232,196,216,0.15)">
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-3">
-                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-pink-400 to-purple-400 flex items-center justify-center shadow-md">
+                <div class="w-12 h-12 rounded-full flex items-center justify-center shadow-md" style="background:linear-gradient(135deg,var(--mama-rose),var(--mama-purple))">
                   <span class="text-white font-bold">{{ record.weekNumber }}</span>
                 </div>
                 <div>
