@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { environment } from '@env/environment';
+import { BabyNameRequest, BabyNameResponse } from '../models/models';
 
 @Injectable({ providedIn: 'root' })
 export class AiService {
@@ -40,5 +41,9 @@ export class AiService {
       pregnancy_week: pregnancyWeek,
       image_base64: imageBase64 || null
     });
+  }
+
+  suggestBabyNames(request: BabyNameRequest): Observable<BabyNameResponse> {
+    return this.http.post<BabyNameResponse>(`${this.aiUrl}/api/ai/baby-names/suggest`, request);
   }
 }

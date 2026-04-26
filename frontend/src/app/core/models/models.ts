@@ -232,3 +232,46 @@ export interface ChatMessage {
   content: string;
   timestamp?: Date;
 }
+
+export interface MedicationReminder {
+  id: number;
+  medicationId: number;
+  medicationName: string;
+  dosage: string;
+  scheduledTime: string;
+  status: 'PENDING' | 'TAKEN' | 'DISMISSED' | 'SNOOZED';
+  takenAt: string | null;
+  dismissedAt: string | null;
+  notes: string | null;
+  instructions: string;
+  createdAt: string;
+}
+
+export interface UpcomingRemindersResponse {
+  totalUpcoming: number;
+  dueNow: number;
+  dueSoon: number;
+  reminders: MedicationReminder[];
+}
+
+export interface BabyNameSuggestion {
+  name: string;
+  meaning: string;
+  origin: string;
+  style: 'arabic' | 'other';
+  why: string;
+}
+
+export interface BabyNameRequest {
+  baby_gender: 'boy' | 'girl';
+  mother_name: string;
+  father_name: string;
+  name_style: 'arabic' | 'other';
+  pregnancy_week: number;
+}
+
+export interface BabyNameResponse {
+  congratulations: string;
+  gender: 'boy' | 'girl';
+  suggestions: BabyNameSuggestion[];
+}

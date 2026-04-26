@@ -33,15 +33,24 @@ import { User, PregnancyProfile, Appointment, Symptom, NutritionPlan, Medication
   template: `
     <div class="space-y-6 animate-fade-in">
       <!-- Header -->
-      <div class="flex items-center justify-between">
-        <div>
-          <h1 class="text-2xl font-poppins font-bold text-gray-800">Doctor Panel 🩺</h1>
-          <p class="text-gray-500 font-poppins text-sm">Welcome, Dr. {{ (authService.user()?.fullName || '').split(' ').slice(1).join(' ') }}</p>
-        </div>
-        <div class="text-right">
-          <p class="text-sm text-gray-400">{{ today | date:'EEE, MMM d, yyyy' }}</p>
-        </div>
+      <!-- ADD this instead -->
+<div class="hero-banner">
+  <video class="hero-bg-video" autoplay muted loop playsinline
+         src="app/assets/pregnancy/doctors.mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <p class="hero-greeting">Good {{ timeOfDay }},</p>
+      <h1 class="hero-name">Dr. {{ (authService.user()?.fullName || '').split(' ').slice(1).join(' ') }} 🩺</h1>
+      <p class="hero-subtitle">Managing your patients with care 💙</p>
+      <div class="hero-date">
+        <mat-icon class="!text-sm">calendar_today</mat-icon>
+        {{ today | date:'EEEE, MMMM d, yyyy' }}
       </div>
+    </div>
+  </div>
+</div>
 
       <!-- Stats -->
       <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -538,6 +547,7 @@ import { User, PregnancyProfile, Appointment, Symptom, NutritionPlan, Medication
 })
 export class DoctorDashboardComponent implements OnInit {
   today = new Date();
+  timeOfDay = new Date().getHours() < 12 ? 'morning' : new Date().getHours() < 17 ? 'afternoon' : 'evening';
   loading = true;
   patients: User[] = [];
   selectedPatient: User | null = null;

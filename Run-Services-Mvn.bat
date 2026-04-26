@@ -7,6 +7,10 @@ echo Note: You requested to use mvn, but the mvn command
 echo was not found in the global PATH. If you have it 
 echo configured, these windows will start the servers.
 
+REM Set environment variables
+set HF_API_TOKEN=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
+set GEMINI_API_KEY=AIzaSyCYNmSi-aqXjgBQ_06u6xzp_hHrV6l7Guc
+
 echo Starting Frontend (Angular) on port 4200...
 start "Frontend (4200)" cmd /k "cd frontend && npm start"
 
@@ -26,7 +30,7 @@ echo Starting Appointment Service on port 8083...
 start "Appointment Service (8083)" cmd /k "cd appointment-service && mvn spring-boot:run"
 
 echo Starting Baby Preview Service on port 8084...
-start "Baby Preview Service (8084)" cmd /k "cd baby-preview-service && mvn spring-boot:run"
+start "Baby Preview Service (8084)" cmd /k "set HF_API_TOKEN=%HF_API_TOKEN% && cd baby-preview-service && mvn spring-boot:run"
 
 echo Starting Education Service on port 8085...
 start "Education Service (8085)" cmd /k "cd education-service && mvn spring-boot:run"

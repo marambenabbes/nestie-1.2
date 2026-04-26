@@ -68,6 +68,13 @@ spring:
           filters:
             - StripPrefix=1
 
+        - id: medication-reminders
+          uri: http://${PREGNANCY_SERVICE_HOST:localhost}:8082
+          predicates:
+            - Path=/api/medication-reminders/**
+          filters:
+            - StripPrefix=1
+
         # ── Appointment Service ──
         - id: appointments
           uri: http://${APPOINTMENT_SERVICE_HOST:localhost}:8083

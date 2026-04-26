@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 
 from routers import (
     baby_prediction,
+    baby_names,
     chatbot,
     growth_comparison,
     nutrition_ai,
@@ -43,6 +44,7 @@ app.include_router(nutrition_ai.router, prefix="/api/ai/nutrition", tags=["Nutri
 app.include_router(growth_comparison.router, prefix="/api/ai/growth", tags=["Growth Comparison"])
 app.include_router(ultrasound_analysis.router, prefix="/api/ai", tags=["Ultrasound Analysis"])
 app.include_router(baby_prediction.router, prefix="/api/ai", tags=["Baby Prediction"])
+app.include_router(baby_names.router, prefix="/api/ai", tags=["Baby Names"])
 
 
 @app.get("/health")

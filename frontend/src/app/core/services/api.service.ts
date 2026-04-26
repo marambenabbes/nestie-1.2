@@ -4,7 +4,8 @@ import { Observable } from 'rxjs';
 import { environment } from '@env/environment';
 import {
   User, PregnancyProfile, Appointment, Symptom,
-  NutritionPlan, Medication, BabyGrowth, DoctorAdvice, PageResponse
+  NutritionPlan, Medication, BabyGrowth, DoctorAdvice, PageResponse,
+  MedicationReminder, UpcomingRemindersResponse
 } from '../models/models';
 
 @Injectable({ providedIn: 'root' })
@@ -173,5 +174,25 @@ export class ApiService {
   }
   deleteBabyPreview(id: number): Observable<void> {
     return this.http.delete<void>(`${this.api}/baby-preview/${id}`);
+  }
+
+  // ─── Medication Reminders ─────────────────────────────────
+  getUpcomingReminders(userId: number, hoursAhead = 24): Observable<UpcomingRemindersResponse> {
+    return this.http.get<UpcomingRemindersResponse>(`${this.api}/medication-reminders/user/${userId}/upcoming`, { params: { hoursAhead } });
+  }
+  getTodayReminders(userId: number): Observable<MedicationReminder[]> {
+    return this.http.get<MedicationReminder[]>(`${this.api}/medication-reminders/user/${userId}/today`);
+  }
+  markReminderAsTaken(reminderId: number, notes?: string): Observable<MedicationReminder> {
+    return this.http.post<MedicationReminder>(`${this.api}/medication-reminders/${reminderId}/take`, { notes });
+  }
+  dismissReminder(reminderId: number): Observable<MedicationReminder> {
+    return this.http.post<MedicationReminder>(`${this.api}/medication-reminders/${reminderId}/dismiss`, {});
+  }
+  snoozeReminder(reminderId: number, snoozeMinutes = 15): Observable<MedicationReminder> {
+    return this.http.post<MedicationReminder>(`${this.api}/medication-reminders/${reminderId}/snooze`, { snoozeMinutes });
+  }
+  getReminderHistory(medicationId: number): Observable<MedicationReminder[]> {
+    return this.http.get<MedicationReminder[]>(`${this.api}/medication-reminders/medication/${medicationId}/history`);
   }
 }

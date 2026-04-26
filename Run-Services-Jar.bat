@@ -5,6 +5,10 @@ echo ==============================================
 
 echo Note: This starts the pre-compiled JARs instead of Maven!
 
+REM Set environment variables
+set HF_API_TOKEN=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
+set GEMINI_API_KEY=AIzaSyCYNmSi-aqXjgBQ_06u6xzp_hHrV6l7Guc
+
 echo Starting Frontend (Angular) on port 4200...
 start "Frontend (4200)" cmd /k "cd frontend && npm start"
 
@@ -24,7 +28,7 @@ echo Starting Appointment Service on port 8083...
 start "Appointment Service (8083)" cmd /k "cd appointment-service\target && java -jar appointment-service-0.0.1-SNAPSHOT.jar"
 
 echo Starting Baby Preview Service on port 8084...
-start "Baby Preview Service (8084)" cmd /k "cd baby-preview-service\target && java -jar baby-preview-service-0.0.1-SNAPSHOT.jar"
+start "Baby Preview Service (8084)" cmd /k "set HF_API_TOKEN=%HF_API_TOKEN% && cd baby-preview-service\target && java -jar baby-preview-service-0.0.1-SNAPSHOT.jar"
 
 echo Starting Education Service on port 8085...
 start "Education Service (8085)" cmd /k "cd education-service\target && java -jar education-service-0.0.1-SNAPSHOT.jar"

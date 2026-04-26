@@ -11,15 +11,18 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AuthService } from '../../core/services/auth.service';
 import { ApiService } from '../../core/services/api.service';
-import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
+import { AiService } from '../../core/services/ai.service';
+import { PregnancyProfile, User, DoctorAdvice, BabyNameResponse } from '../../core/models/models';
 
 @Component({
   selector: 'app-pregnancy-profile',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, MatCardModule, MatIconModule, MatButtonModule, MatChipsModule,
-            MatFormFieldModule, MatInputModule, MatSelectModule, MatSnackBarModule, MatTooltipModule, MatBadgeModule],
+            MatFormFieldModule, MatInputModule, MatSelectModule, MatSnackBarModule, MatTooltipModule, MatBadgeModule,
+            MatProgressSpinnerModule],
   template: `
     <div class="pregnancy-profile-page" *ngIf="profile && !showForm">
 
@@ -28,16 +31,14 @@ import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
       <!-- ═══════════════════════════════════════════════════════════ -->
     <section class="hero-section">
 
-  <!-- Full Background Image -->
-  <img
-    [src]="pregnancyMonths[currentMonth]"
-    [alt]="'Pregnancy Month ' + (currentMonth + 1)"
-    class="hero-bg-image"
-  />
+  <!-- Soft background gradient — no image as bg -->
+  <div class="hero-bg-gradient"></div>
 
-  <!-- Berry fade overlay -->
-  <div class="hero-overlay"></div>
+  <!-- Decorative blobs -->
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
 
+  <!-- LEFT: text content -->
   <div class="hero-content">
     <div class="hero-text">
       <span class="hero-badge">
@@ -73,18 +74,29 @@ import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
           </div>
         </div>
       </div>
+      <!-- Action buttons sit under the stats on the left -->
+      <div class="hero-actions">
+        <button class="btn-edit" (click)="editProfile()">
+          <mat-icon>edit</mat-icon>
+          <span>Edit Profile</span>
+        </button>
+        <button class="btn-delete" (click)="deleteProfile()">
+          <mat-icon>delete_outline</mat-icon>
+        </button>
+      </div>
     </div>
   </div>
 
-  <!-- Action buttons -->
-  <div class="hero-actions">
-    <button class="btn-edit" (click)="editProfile()">
-      <mat-icon>edit</mat-icon>
-      <span>Edit Profile</span>
-    </button>
-    <button class="btn-delete" (click)="deleteProfile()">
-      <mat-icon>delete_outline</mat-icon>
-    </button>
+  <!-- RIGHT: pregnancy illustration -->
+  <div class="hero-image-panel">
+    <div class="hero-image-glow"></div>
+    <div class="image-circle-frame">
+      <img
+        [src]="pregnancyMonths[currentMonth]"
+        [alt]="'Pregnancy Month ' + (currentMonth + 1)"
+        class="hero-pregnancy-img"
+      />
+    </div>
   </div>
 
 </section>
@@ -211,6 +223,117 @@ import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
           </div>
         </div>
       </section>
+
+      <!-- ═══════════════════════════════════════════════════════════ -->
+      <!-- BABY NAME SUGGESTIONS (Week 12+)                           -->
+      <!-- ═══════════════════════════════════════════════════════════ -->
+      <section *ngIf="calculatedWeek >= 12" class="baby-names-section">
+        <div class="section-header">
+          <div class="section-icon baby-icon">
+            <mat-icon>child_care</mat-icon>
+          </div>
+          <h2>Baby Name Suggestions 👶✨</h2>
+        </div>
+
+        <!-- Name Form (if not generated yet) -->
+        <div *ngIf="!babyNameResponse" class="glass-card name-form-card">
+          <p class="name-intro">Discover the perfect name for your little one! Tell us about yourselves:</p>
+          
+          <form [formGroup]="babyNameForm" (ngSubmit)="generateBabyNames()" class="baby-name-form">
+            <div class="name-inputs">
+              <mat-form-field appearance="outline">
+                <mat-label>Mother's Name</mat-label>
+                <input matInput formControlName="motherName" placeholder="e.g., Amira">
+                <mat-icon matPrefix>person</mat-icon>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Father's Name</mat-label>
+                <input matInput formControlName="fatherName" placeholder="e.g., Youssef">
+                <mat-icon matPrefix>person</mat-icon>
+              </mat-form-field>
+            </div>
+
+            <div class="gender-style-row">
+              <div class="gender-selection">
+                <p class="input-label">Baby's Gender</p>
+                <div class="gender-btns">
+                  <button type="button" class="gender-btn" 
+                          [class.active]="selectedGender === 'boy'"
+                          (click)="selectGender('boy')">
+                    <mat-icon>male</mat-icon>
+                    Boy
+                  </button>
+                  <button type="button" class="gender-btn"
+                          [class.active]="selectedGender === 'girl'"
+                          (click)="selectGender('girl')">
+                    <mat-icon>female</mat-icon>
+                    Girl
+                  </button>
+                </div>
+              </div>
+
+              <div class="style-selection">
+                <p class="input-label">Name Style</p>
+                <div class="style-btns">
+                  <button type="button" class="style-btn"
+                          [class.active]="selectedStyle === 'arabic'"
+                          (click)="selectStyle('arabic')">
+                    🕌 Arabic
+                  </button>
+                  <button type="button" class="style-btn"
+                          [class.active]="selectedStyle === 'other'"
+                          (click)="selectStyle('other')">
+                    🌍 International
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <button mat-raised-button type="submit" class="generate-btn"
+                    [disabled]="babyNameForm.invalid || !selectedGender || loadingNames">
+              <mat-spinner *ngIf="loadingNames" diameter="20" class="btn-spinner"></mat-spinner>
+              <mat-icon *ngIf="!loadingNames">auto_awesome</mat-icon>
+              {{ loadingNames ? 'Generating...' : 'Reveal Name Suggestions 🎉' }}
+            </button>
+          </form>
+        </div>
+
+        <!-- Name Results -->
+        <div *ngIf="babyNameResponse" class="name-results">
+          <div class="glass-card congrats-banner">
+            <div class="confetti-icon">🎉</div>
+            <h3>{{ babyNameResponse.congratulations }}</h3>
+            <p>Here are our top 3 name suggestions:</p>
+          </div>
+
+          <div class="name-suggestions">
+            <div *ngFor="let suggestion of babyNameResponse.suggestions; let i = index"
+                 class="glass-card name-card"
+                 [class.rank-1]="i === 0">
+              <div class="rank-badge">{{ i + 1 }}</div>
+              <h4 class="name-title">{{ suggestion.name }}</h4>
+              <p class="name-origin">
+                <mat-icon>public</mat-icon>
+                {{ suggestion.origin }}
+              </p>
+              <p class="name-meaning">
+                <mat-icon>auto_stories</mat-icon>
+                {{ suggestion.meaning }}
+              </p>
+              <div class="name-why">
+                <mat-icon>favorite</mat-icon>
+                <p>{{ suggestion.why }}</p>
+              </div>
+            </div>
+          </div>
+
+          <button mat-button class="try-again-btn" (click)="resetBabyNames()">
+            <mat-icon>refresh</mat-icon>
+            Try Different Names
+          </button>
+        </div>
+      </section>
     </div>
 
     <!-- ═══════════════════════════════════════════════════════════ -->
@@ -314,67 +437,157 @@ import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
     }
 
     /* ─── HERO SECTION ─── */
-   .hero-section {
-  position: relative;
-  border-radius: 28px;
-  overflow: hidden;
-  min-height: 380px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end; /* text goes to bottom */
-  margin-bottom: 1.75rem;
-}
+    .hero-section {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      min-height: 360px;
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      margin-bottom: 1.75rem;
+      background: linear-gradient(135deg,
+        #fff5f7 0%,
+        #fce4ec 35%,
+        #f3e5f5 65%,
+        #ede7f6 100%
+      );
+    }
 
-.hero-bg-image {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: right center;
-  z-index: 0;
-  -webkit-mask-image: radial-gradient(
-    ellipse 70% 80% at 75% 50%,
-    black 40%,
-    rgba(0,0,0,0.6) 60%,
-    rgba(0,0,0,0.2) 75%,
-    transparent 100%
-  );
-  mask-image: radial-gradient(
-    ellipse 70% 80% at 75% 50%,
-    black 40%,
-    rgba(0,0,0,0.6) 60%,
-    rgba(0,0,0,0.2) 75%,
-    transparent 100%
-  );
-}
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to right,
-    rgba(255, 245, 247, 0.95) 0%,
-    rgba(255, 245, 247, 0.70) 25%,
-    rgba(255, 245, 247, 0.30) 50%,
-    rgba(255, 245, 247, 0.05) 68%,
-    rgba(255, 245, 247, 0) 75%
-  );
-  z-index: 1;
-}
-.hero-content {
-  position: relative;
-  z-index: 2;
-  padding: 0 2.5rem 2rem; /* no top padding, text stays low */
-}
+    /* Soft ambient blobs for depth */
+    .hero-bg-gradient {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 20% 50%, rgba(255,255,255,0.7) 0%, transparent 70%);
+      z-index: 0;
+    }
+    .hero-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero-blob-1 {
+      width: 320px; height: 320px;
+      background: rgba(244, 143, 177, 0.18);
+      top: -60px; left: -60px;
+    }
+    .hero-blob-2 {
+      width: 260px; height: 260px;
+      background: rgba(206, 147, 216, 0.15);
+      bottom: -40px; left: 30%;
+    }
 
-.hero-actions {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  gap: 0.75rem;
-  padding: 0 2.5rem 1.75rem;
-  justify-content: flex-end;
-}
+    /* LEFT text panel */
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: 2.5rem 2rem 2.5rem 2.5rem;
+      min-width: 0;
+    }
+
+    /* RIGHT image panel */
+    .hero-image-panel {
+      position: relative;
+      z-index: 2;
+      flex-shrink: 0;
+      width: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+    }
+
+    /* Radial glow behind the illustration */
+    .hero-image-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle at center,
+        rgba(244, 143, 177, 0.08) 0%,
+        rgba(206, 147, 216, 0.05) 40%,
+        transparent 70%
+      );
+      z-index: 0;
+    }
+
+    /* Beautiful circular frame for the image */
+    .image-circle-frame {
+      position: relative;
+      z-index: 1;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(252, 228, 236, 0.6) 50%,
+        rgba(243, 229, 245, 0.6) 100%
+      );
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid rgba(244, 143, 177, 0.15);
+      transition: all 0.5s ease;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .image-circle-frame::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, 
+        rgba(244, 143, 177, 0.12) 0%,
+        rgba(206, 147, 216, 0.12) 100%
+      );
+      filter: blur(16px);
+      opacity: 0.5;
+      z-index: -1;
+      animation: pulse-glow 4s ease-in-out infinite;
+    }
+
+    .image-circle-frame:hover {
+      transform: scale(1.03);
+      border-color: rgba(244, 143, 177, 0.3);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 0.7; }
+    }
+
+    /* The illustration itself — sits inside the circle */
+    .hero-pregnancy-img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .hero-pregnancy-img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Actions now live inside hero-text */
+    .hero-actions {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
 
     .hero-text {
       flex: 1;
@@ -473,119 +686,7 @@ import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
       letter-spacing: 0.02em;
     }
 
-    /* ─── HERO IMAGE ─── */
-    .hero-image-area {
-      position: relative;
-      flex-shrink: 0;
-      width: 280px;
-      height: 280px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .image-glow {
-      position: absolute;
-      inset: -15px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(212, 83, 126, 0.2) 0%, transparent 70%);
-      animation: glowPulse 3s ease-in-out infinite;
-    }
-    @keyframes glowPulse {
-      0%, 100% { transform: scale(1); opacity: 0.6; }
-      50% { transform: scale(1.08); opacity: 1; }
-    }
-
-    .image-ring {
-      position: absolute;
-      inset: -4px;
-      border-radius: 50%;
-      border: 2.5px dashed rgba(201, 141, 184, 0.35);
-      animation: spinSlow 25s linear infinite;
-    }
-    @keyframes spinSlow { to { transform: rotate(360deg); } }
-
-    .pregnancy-image-container {
-      position: relative;
-      width: 250px;
-      height: 250px;
-      border-radius: 50%;
-      overflow: hidden;
-      background: radial-gradient(circle at 30% 20%, var(--mama-pink-light) 0%, var(--mama-blush) 35%, #ffffff 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 16px 50px rgba(212, 83, 126, 0.2);
-      cursor: pointer;
-      transition: transform 0.4s ease;
-      z-index: 2;
-    }
-    .pregnancy-image-container:hover {
-      transform: scale(1.04);
-    }
-
-    .pregnancy-image {
-      max-width: 95%;
-      max-height: 95%;
-      object-fit: contain;
-      transform: scale(1.85);
-      transition: transform 0.5s ease, filter 0.3s ease;
-    }
-    .pregnancy-image-container:hover .pregnancy-image {
-      transform: scale(2.0);
-      filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.12));
-    }
-
-    /* ─── BABY HOVER TOOLTIP ─── */
-    .baby-hover-tooltip {
-      position: absolute;
-      left: -270px;
-      top: 50%;
-      transform: translateY(-50%) translateX(-8px) scale(0.92);
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-      z-index: 10;
-    }
-    .baby-hover-tooltip.visible {
-      opacity: 1;
-      transform: translateY(-50%) translateX(0) scale(1);
-    }
-
-    .tooltip-bubble {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.55rem 1.1rem;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 12px 36px rgba(153, 53, 86, 0.18);
-      border: 1px solid rgba(232, 196, 216, 0.3);
-      white-space: nowrap;
-    }
-    .tooltip-emoji { font-size: 1.2rem; animation: bounce 1.5s ease-in-out infinite; }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-4px); }
-    }
-    .tooltip-bubble p {
-      margin: 0;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--mama-rose-deep);
-      font-family: 'Poppins', sans-serif;
-    }
-
-    /* ─── HERO ACTIONS ─── */
-    .hero-actions {
-      display: flex;
-      gap: 0.75rem;
-      margin-top: 1.25rem;
-      position: relative;
-      z-index: 2;
-      justify-content: flex-end;
-    }
+    /* ─── HERO BUTTONS ─── */
     .btn-edit {
       display: inline-flex;
       align-items: center;
@@ -1001,24 +1102,261 @@ import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* ─── BABY NAME SUGGESTIONS ─── */
+    .baby-names-section {
+      margin-bottom: 1.5rem;
+    }
+    .baby-icon {
+      background: linear-gradient(135deg, #FFB6C1, #FF69B4);
+    }
+    .name-form-card {
+      padding: 2rem;
+    }
+    .name-intro {
+      text-align: center;
+      color: var(--mama-lavender-dark);
+      font-size: 0.95rem;
+      margin: 0 0 1.5rem;
+    }
+    .baby-name-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .name-inputs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .gender-style-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .input-label {
+      font-weight: 600;
+      color: var(--mama-berry);
+      margin: 0 0 0.75rem;
+      font-size: 0.9rem;
+    }
+    .gender-btns, .style-btns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    .gender-btn, .style-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1rem;
+      border: 2px solid rgba(232, 196, 216, 0.3);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: #999;
+      font-size: 0.85rem;
+    }
+    .gender-btn mat-icon {
+      font-size: 22px;
+      width: 22px;
+      height: 22px;
+    }
+    .gender-btn.active {
+      border-color: var(--mama-rose);
+      background: rgba(244, 143, 177, 0.1);
+      color: var(--mama-rose);
+    }
+    .style-btn.active {
+      border-color: var(--mama-purple);
+      background: rgba(206, 147, 216, 0.1);
+      color: var(--mama-purple);
+    }
+    .gender-btn:hover:not(.active), .style-btn:hover:not(.active) {
+      border-color: rgba(244, 143, 177, 0.5);
+    }
+    .generate-btn {
+      width: 100%;
+      padding: 1rem 2rem !important;
+      border-radius: 999px !important;
+      background: linear-gradient(135deg, var(--mama-rose), var(--mama-purple)) !important;
+      color: #fff !important;
+      font-weight: 600 !important;
+      font-size: 0.95rem !important;
+      box-shadow: 0 8px 24px rgba(212, 83, 126, 0.3) !important;
+      transition: all 0.3s ease !important;
+    }
+    .generate-btn:hover:not(:disabled) {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 12px 32px rgba(212, 83, 126, 0.4) !important;
+    }
+    .btn-spinner {
+      display: inline-block;
+      margin-right: 0.5rem;
+    }
+    .name-results {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .congrats-banner {
+      padding: 2rem;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(252, 228, 236, 0.8), rgba(243, 229, 245, 0.8));
+    }
+    .confetti-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .congrats-banner h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--mama-berry);
+      margin: 0 0 0.5rem;
+    }
+    .congrats-banner p {
+      color: var(--mama-lavender-dark);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    .name-suggestions {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .name-card {
+      position: relative;
+      padding: 1.75rem 1.5rem;
+      transition: transform 0.3s ease;
+    }
+    .name-card:hover {
+      transform: translateY(-4px);
+    }
+    .rank-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #fff;
+      background: linear-gradient(135deg, #C0C0C0, #A8A8A8);
+    }
+    .name-card.rank-1 .rank-badge {
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+      box-shadow: 0 4px 16px rgba(255, 215, 0, 0.4);
+    }
+    .name-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--mama-berry);
+      margin: 0 0 0.5rem;
+    }
+    .name-origin {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--mama-purple);
+      font-weight: 600;
+      font-size: 0.8rem;
+      margin: 0 0 0.85rem;
+    }
+    .name-origin mat-icon {
+      font-size: 16px;
+      width: 16px;
+      height: 16px;
+    }
+    .name-meaning {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      padding: 0.85rem;
+      border-radius: 12px;
+      background: rgba(244, 143, 177, 0.08);
+      margin: 0 0 0.85rem;
+      font-size: 0.82rem;
+      color: #666;
+    }
+    .name-meaning mat-icon {
+      color: var(--mama-rose);
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+    .name-why {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      padding: 0.85rem;
+      border-radius: 12px;
+      background: rgba(206, 147, 216, 0.08);
+      font-size: 0.8rem;
+      color: #555;
+    }
+    .name-why mat-icon {
+      color: var(--mama-purple);
+      font-size: 16px;
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+    .name-why p {
+      margin: 0;
+    }
+    .try-again-btn {
+      display: block;
+      margin: 0 auto;
+      padding: 0.7rem 1.8rem !important;
+      border-radius: 999px !important;
+      background: rgba(255, 255, 255, 0.8) !important;
+      color: var(--mama-berry) !important;
+      font-weight: 600 !important;
+      border: 2px solid rgba(232, 196, 216, 0.3) !important;
+    }
+    .try-again-btn:hover {
+      background: rgba(244, 143, 177, 0.1) !important;
+      border-color: var(--mama-rose) !important;
+    }
+
     /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {
-      .hero-content {
+      .hero-section {
         flex-direction: column-reverse;
-        text-align: center;
+        min-height: unset;
+      }
+      .hero-content {
+        padding: 1.75rem 1.5rem;
+        justify-content: center;
       }
       .hero-text {
         display: flex;
         flex-direction: column;
         align-items: center;
+        text-align: center;
       }
       .hero-subtitle { max-width: 100%; }
       .hero-stats { justify-content: center; }
-      .hero-image-area {
-        width: 220px; height: 220px;
+      .hero-actions { justify-content: center; }
+      .hero-image-panel {
+        width: 100%;
+        height: 340px;
+        align-items: center;
+        justify-content: center;
       }
-      .pregnancy-image-container {
-        width: 200px; height: 200px;
+      .image-circle-frame {
+        width: 260px;
+        height: 260px;
       }
       .info-grid {
         grid-template-columns: 1fr;
@@ -1029,7 +1367,15 @@ import { PregnancyProfile, User, DoctorAdvice } from '../../core/models/models';
       .form-week-display {
         grid-column: span 1;
       }
-      .hero-actions { justify-content: center; }
+      .name-inputs {
+        grid-template-columns: 1fr;
+      }
+      .gender-style-row {
+        grid-template-columns: 1fr;
+      }
+      .name-suggestions {
+        grid-template-columns: 1fr;
+      }
     }
   `]
 })
@@ -1070,10 +1416,18 @@ export class PregnancyProfileComponent implements OnInit {
   formCalculatedDay = 0;
   formCalculatedTrimester = 1;
 
+  // Baby Name Suggestion properties
+  babyNameForm!: FormGroup;
+  selectedGender: 'boy' | 'girl' | null = null;
+  selectedStyle: 'arabic' | 'other' = 'arabic';
+  loadingNames = false;
+  babyNameResponse: BabyNameResponse | null = null;
+
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private apiService: ApiService,
+    private aiService: AiService,
     private snackBar: MatSnackBar
   ) {
     this.profileForm = this.fb.group({
@@ -1086,6 +1440,12 @@ export class PregnancyProfileComponent implements OnInit {
       medicalConditions: [''],
       allergies: [''],
       doctorId: [null]
+    });
+
+    // Initialize baby name form
+    this.babyNameForm = this.fb.group({
+      motherName: ['', Validators.required],
+      fatherName: ['', Validators.required]
     });
 
     // Auto-calculate due date and current week when LMP changes (Naegele's Rule: LMP + 280 days)
@@ -1276,5 +1636,46 @@ export class PregnancyProfileComponent implements OnInit {
       'HIGH': 'bg-orange-100 text-orange-700', 'URGENT': 'bg-red-100 text-red-700'
     };
     return map[priority] || 'bg-gray-100 text-gray-600';
+  }
+
+  // Baby Name Suggestion methods
+  selectGender(gender: 'boy' | 'girl'): void {
+    this.selectedGender = gender;
+  }
+
+  selectStyle(style: 'arabic' | 'other'): void {
+    this.selectedStyle = style;
+  }
+
+  generateBabyNames(): void {
+    if (this.babyNameForm.invalid || !this.selectedGender) return;
+
+    this.loadingNames = true;
+    const request = {
+      baby_gender: this.selectedGender,
+      mother_name: this.babyNameForm.value.motherName,
+      father_name: this.babyNameForm.value.fatherName,
+      name_style: this.selectedStyle,
+      pregnancy_week: this.calculatedWeek
+    };
+
+    this.aiService.suggestBabyNames(request).subscribe({
+      next: (response) => {
+        this.babyNameResponse = response;
+        this.loadingNames = false;
+        this.snackBar.open('Name suggestions generated! 🎉', 'Close', { duration: 3000 });
+      },
+      error: (err) => {
+        this.loadingNames = false;
+        this.snackBar.open(err.error?.detail || 'Failed to generate name suggestions', 'Close', { duration: 4000 });
+      }
+    });
+  }
+
+  resetBabyNames(): void {
+    this.babyNameResponse = null;
+    this.babyNameForm.reset();
+    this.selectedGender = null;
+    this.selectedStyle = 'arabic';
   }
 }

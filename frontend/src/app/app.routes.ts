@@ -54,6 +54,10 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/baby-preview/baby-preview.component').then(m => m.BabyPreviewComponent)
       },
       {
+        path: 'baby-names',
+        loadComponent: () => import('./pages/baby-names/baby-names.component').then(m => m.BabyNamesComponent)
+      },
+      {
         path: 'education',
         loadComponent: () => import('./pages/education/education-list.component').then(m => m.EducationListComponent)
       },

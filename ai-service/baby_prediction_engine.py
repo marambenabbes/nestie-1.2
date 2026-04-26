@@ -399,7 +399,7 @@ def generate_baby_image_hf(
             for attempt in range(1, HF_NETWORK_RETRY_ATTEMPTS + 1):
                 try:
                     with httpx.Client(
-                        timeout=httpx.Timeout(connect=20.0, read=180.0, write=30.0),
+                        timeout=httpx.Timeout(connect=20.0, read=180.0, write=30.0, pool=10.0),
                         headers=client_headers,
                         limits=httpx.Limits(max_connections=10, max_keepalive_connections=0),
                     ) as client:
