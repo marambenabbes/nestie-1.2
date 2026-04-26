@@ -42,6 +42,11 @@ __pycache__/
 *.pyc
 .venv/
 
+# Environment variables (SECURITY: Never commit these!)
+.env
+**/.env
+*.env
+
 # Java/Maven build outputs in service folders
 **/target/
 

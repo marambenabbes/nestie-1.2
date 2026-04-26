@@ -7,9 +7,15 @@ echo Note: You requested to use mvn, but the mvn command
 echo was not found in the global PATH. If you have it 
 echo configured, these windows will start the servers.
 
-REM Set environment variables
-set HF_API_TOKEN=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
-set GEMINI_API_KEY=AIzaSyCYNmSi-aqXjgBQ_06u6xzp_hHrV6l7Guc
+REM Load environment variables from .env file
+call load-env.bat
+if errorlevel 1 (
+    echo Failed to load environment variables!
+    pause
+    exit /b 1
+)
+
+echo Environment variables loaded from .env file
 
 echo Starting Frontend (Angular) on port 4200...
 start "Frontend (4200)" cmd /k "cd frontend && npm start"

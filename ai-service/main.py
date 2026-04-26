@@ -19,7 +19,17 @@ from routers import (
 )
 
 import os
-load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
+from pathlib import Path
+
+# Load environment variables from both root .env and local .env
+# Root .env takes precedence for shared secrets (HF_API_TOKEN, GEMINI_API_KEY)
+root_env = Path(__file__).parent.parent / ".env"
+local_env = Path(__file__).parent / ".env"
+
+if root_env.exists():
+    load_dotenv(root_env)  # Load root .env first (shared secrets)
+if local_env.exists():
+    load_dotenv(local_env, override=False)  # Load local .env (service-specific config, don't override)
 
 app = FastAPI(
     title="Nestie AI Service",

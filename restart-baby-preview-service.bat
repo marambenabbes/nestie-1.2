@@ -1,8 +1,15 @@
 @echo off
 echo Restarting Baby Preview Service with new HF token...
 
-REM Set the new Hugging Face API token
-set HF_API_TOKEN=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
+REM Load environment variables from .env file
+call load-env.bat
+if errorlevel 1 (
+    echo Failed to load environment variables!
+    pause
+    exit /b 1
+)
+
+echo Environment variables loaded from .env file
 
 echo Stopping Baby Preview Service if running...
 for /f "tokens=5" %%a in ('netstat -aon ^| find ":8084" ^| find "LISTENING"') do taskkill /F /PID %%a 2>nul

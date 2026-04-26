@@ -3,9 +3,15 @@ echo ================================================
 echo  Restarting AI Service + Baby Preview Service
 echo ================================================
 
-REM Set the new Hugging Face API token
-set HF_API_TOKEN=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
-set GEMINI_API_KEY=AIzaSyCYNmSi-aqXjgBQ_06u6xzp_hHrV6l7Guc
+REM Load environment variables from .env file
+call load-env.bat
+if errorlevel 1 (
+    echo Failed to load environment variables!
+    pause
+    exit /b 1
+)
+
+echo Environment variables loaded from .env file
 
 echo [1/4] Stopping AI Service (port 8000)...
 for /f "tokens=5" %%a in ('netstat -aon ^| find ":8000" ^| find "LISTENING"') do taskkill /F /PID %%a 2>nul

@@ -12,12 +12,8 @@ import json
 
 router = APIRouter()
 
-# Configure Gemini
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-if not GEMINI_API_KEY:
-    raise ValueError("GEMINI_API_KEY not found in environment variables")
-
-genai.configure(api_key=GEMINI_API_KEY)
+# Note: Gemini configuration happens in the endpoint function
+# to ensure environment variables are loaded first by main.py
 
 
 class BabyNameRequest(BaseModel):
@@ -48,6 +44,16 @@ async def suggest_baby_names(request: BabyNameRequest):
     Generate AI-powered baby name suggestions based on parents' names and preferences.
     Only available from week 12 onwards (month 3+).
     """
+    
+    # Configure Gemini API (done here to ensure env vars are loaded)
+    GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+    if not GEMINI_API_KEY:
+        raise HTTPException(
+            status_code=500,
+            detail="GEMINI_API_KEY not configured. Please check environment variables."
+        )
+    
+    genai.configure(api_key=GEMINI_API_KEY)
     
     # Validate pregnancy week (month 3 = week 12+)
     if request.pregnancy_week < 12:
